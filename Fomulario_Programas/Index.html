@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+    <!-- Agregar enlace a Bootstrap CSS aquí -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://www.javeriana.edu.co/recursosdb/659410/668610/deparatamentos-e-institutos.jpg/39709ee8-a370-7ea2-4880-fb9d9f6e2c3d?t=1684251553829');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .container-form {
+            background-color: rgba(255, 255, 255);
+            padding: 40px;
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container-form{
+                margin: 0;
+            }
+        }
+
+        /*Quitar controles a numeros Importante */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+    <title>Formulario Bootstrap</title>
+</head>
+<body>
+    <div class="container-fluid h-100 d-flex align-items-center justify-content-end">
+        <div class="container-form ml-auto col-md-6 col-sm-12"> 
+            <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+                <input type="hidden" name="oid" value="00D7j0000004eQD">
+                <input type="hidden" name="retURL" value="https://www.javeriana.edu.co/thank-you-page-ciencias-sociales-pre">
+                <input type="hidden" name="debug" value="1">
+                <input type="hidden" name="debugEmail" value="gesalas@javeriana.edu.co">
+                <h3>Styles</h3>
+
+                <!--Nombres y apellidos-->
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <input placeholder="*Nombre(s)" id="first_name" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="40" name="first_name" type="text" required="">
+                    </div>
+
+                    <div class="form-group col-6">
+                        <input placeholder="*Apellidos" id="last_name" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="80" name="last_name" type="text" required="">
+                    </div>
+                </div>
+
+                <!--Documentos de identidad-->
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <select id="document_type" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" name="00N7j000002BI3X" required="">
+                            <option value="">*Tipo de documento</option>
+                            <option value="Documento RAI">Documento RAI</option>
+                            <option value="Anterior ID (Doble ID)">Anterior ID (Doble ID)</option>
+                            <option value="Nuevo ID (Doble ID)">Nuevo ID (Doble ID)</option>
+                            <option value="Contraseña Registraduria">Contraseña Registraduria</option>
+                            <option value="Libreta Militar">Libreta Militar</option>
+                            <option value="Cédula Ciudadanía">Cédula Ciudadanía</option>
+                            <option value="Cédula Extranjería">Cédula Extranjería</option>
+                            <option value="No Identificación Tributaria">No Identificación Tributaria</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="Sin Especificar">Sin Especificar</option>
+                            <option value="Tarjeta Identidad">Tarjeta Identidad</option>
+                            <option value="Nro Único de Identific Persona">Nro Único de Identific Persona</option>
+                            <option value="Carné Diplomarico">Carné Diplomarico</option>
+                            <option value="Consecutivo Grados">Consecutivo Grados</option>
+                            <option value="Cedula de Identidad">Cedula de Identidad</option>
+                            <option value="Extranjería">Extranjería</option>
+                            <option value="Otro Documento">Otro Documento</option>
+                            <option value="Permiso Especial Permanencia">Permiso Especial Permanencia</option>
+                            <option value="Permiso Temporal Protección">Permiso Temporal Protección</option>
+                            <!-- Agregar opciones aquí -->
+                        </select>
+                    </div>
+
+                    <div class="form-group col-6">
+                        <input placeholder="*Número de documento" id="document_number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="255" name="00N7j000002BI3V" type="number" required="">
+                    </div>
+                </div>
+                <!--Email y celular-->
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <input placeholder="*Email" id="email" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="80" name="email" type="email" required="">
+                    </div>
+                    
+                    <script>
+                        const emailInput = document.getElementById('email');
+                    
+                        emailInput.addEventListener('input', () => {
+                            const emailValue = emailInput.value;
+                            const atIndex = emailValue.indexOf('@');
+                            const dotIndex = emailValue.lastIndexOf('.');
+                            
+                            if (atIndex === -1 || dotIndex === -1 || dotIndex < atIndex) {
+                                emailInput.setCustomValidity('Ingresa una dirección de correo electrónico válida');
+                            } else {
+                                emailInput.setCustomValidity('');
+                            }
+                        });
+                    </script>
+                    
+
+                    <div class="form-group col-12">
+                        <input placeholder="*Teléfono celular" id="mobile" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="40" min="99999999" name="mobile" type="number" oninvalid="this.setCustomValidity('Ingresa un número celular correcto')" required>
+                    </div>
+                </div>
+
+                <!--Lugar de residencia-->
+                
+                <div class="form-row">
+                    <!-- Pais -->
+                    <div class="form-group col-12">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY1c" name="00N7j000002BY1c" type="text">
+                            <option value="">*Pais de residencia</option>
+                        </select>
+                    </div>
+                
+                    <!-- Departamento -->
+                    <div class="form-group col-6" id="departamentoContainer" style="display: none;">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY1h" name="00N7j000002BY1h" type="text">
+                            <option value="">*Selecciona el departamento</option>
+                        </select>
+                    </div>
+                
+                    <!-- Ciudad -->
+                    <div class="form-group col-6" id="ciudadContainer" style="display: none;">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY1i" name="00N7j000002BY1i" type="text">
+                            <option value="">*Selecciona la Ciudad</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Tu otro contenido HTML aquí -->
+                
+                <script>
+                    // Función para cargar las opciones de los desplegables desde el archivo JSON
+                    function cargarOpciones() {
+                        fetch('ubicaciones.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                const paisSelect = document.getElementById('00N7j000002BY1c');
+                                const departamentoSelect = document.getElementById('00N7j000002BY1h');
+                                const ciudadSelect = document.getElementById('00N7j000002BY1i');
+                                const departamentoContainer = document.getElementById('departamentoContainer');
+                                const ciudadContainer = document.getElementById('ciudadContainer');
+                
+                                // Cargar opciones de país
+                                for (const pais in data) {
+                                    const option = document.createElement('option');
+                                    option.value = pais;
+                                    option.textContent = data[pais].nombre;
+                                    paisSelect.appendChild(option);
+                                }
+                
+                                // Manejar cambio de selección de país
+                                paisSelect.addEventListener('change', () => {
+                                    const paisSeleccionado = paisSelect.value;
+                                    const departamentoData = data[paisSeleccionado]?.departamentos;
+                
+                                    if (departamentoData) {
+                                        departamentoContainer.style.display = 'block';
+                                        ciudadContainer.style.display = 'block';
+                
+                                        // Cargar opciones de departamento
+                                        departamentoSelect.innerHTML = '';
+                                        const defaultDeptOption = document.createElement('option');
+                                        defaultDeptOption.value = '';
+                                        defaultDeptOption.textContent = '*Selecciona el departamento';
+                                        departamentoSelect.appendChild(defaultDeptOption);
+                                        for (const depto of departamentoData) {
+                                            const option = document.createElement('option');
+                                            option.value = depto.codigo;
+                                            option.textContent = depto.nombre;
+                                            departamentoSelect.appendChild(option);
+                                        }
+                
+                                        // Cargar opciones de ciudad (para el departamento seleccionado)
+                                        const departamentoSeleccionado = departamentoSelect.value;
+                                        const ciudadData = departamentoData.find(depto => depto.codigo === departamentoSeleccionado)?.ciudades;
+                
+                                        ciudadSelect.innerHTML = '';
+                                        const defaultCiudadOption = document.createElement('option');
+                                        defaultCiudadOption.value = '';
+                                        defaultCiudadOption.textContent = '*Primero selecciona el departamento';
+                                        ciudadSelect.appendChild(defaultCiudadOption);
+                
+                                        if (ciudadData) {
+                                            for (const ciudad of ciudadData) {
+                                                const option = document.createElement('option');
+                                                option.value = ciudad.codigo;
+                                                option.textContent = ciudad.nombre;
+                                                ciudadSelect.appendChild(option);
+                                            }
+                                        }
+                                    } else {
+                                        departamentoContainer.style.display = 'none';
+                                        ciudadContainer.style.display = 'none';
+                                        departamentoSelect.innerHTML = '';
+                                        ciudadSelect.innerHTML = '';
+                                    }
+                                });
+                
+                                // Manejar cambio de selección de departamento
+                                departamentoSelect.addEventListener('change', () => {
+                                    const paisSeleccionado = paisSelect.value;
+                                    const departamentoSeleccionado = departamentoSelect.value;
+                                    const ciudadData = data[paisSeleccionado]?.departamentos.find(depto => depto.codigo === departamentoSeleccionado)?.ciudades;
+                
+                                    ciudadSelect.innerHTML = '';
+                                    const defaultCiudadOption = document.createElement('option');
+                                    defaultCiudadOption.value = '';
+                                    defaultCiudadOption.textContent = '*Selecciona la ciudad';
+                                    ciudadSelect.appendChild(defaultCiudadOption);
+                
+                                    if (ciudadData) {
+                                        for (const ciudad of ciudadData) {
+                                            const option = document.createElement('option');
+                                            option.value = ciudad.codigo;
+                                            option.textContent = ciudad.nombre;
+                                            ciudadSelect.appendChild(option);
+                                        }
+                                    }
+                                });
+                            })
+                            .catch(error => console.error('Error al cargar el archivo JSON:', error));
+                    }
+                
+                    // Llamar a la función al cargar la página
+                    cargarOpciones();
+                </script>
+
+                <!--Periodo de Ingreso-->
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY2L" maxlength="20" name="00N7j000002BY2L" type="text" required="">
+                        <option value="">*Periodo de Ingreso</option>
+                        <option value="PREG2320">Segundo semestre de 2023</option>
+                        <option value="PREG2410">Primer semestre de 2024</option>
+                        <option value="PREG2430">Segundo semestre de 2024</option>
+                        </select>    
+                    </div>
+                </div>
+
+                <h3>Campos Ocultos</h3>
+                <!--origen IMPORTANTE debe estar oculto-->
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="lead_source">Origen del candidato</label>
+                        <select id="lead_source" class="form-control" name="lead_source">
+                            <option value="Landing Pages">Landing Pages</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="00N7j000002BY26">Fuente autorización</label>
+                        <select class="form-control" id="00N7j000002BY26" name="00N7j000002BY26" title="Fuente autorización datos personales">
+                            <option value="Landing Programas">Landing Programas</option>
+                        </select>
+                    </div>
+                </div> 
+
+            <!-- COntenido oculto Fuente, subfuente y campaña -->
+
+            <div class="form-row">
+                <!-- Fuente -->
+                <div class="form-group col-6">
+                    <label for="00N7j000002BKgW">Fuente</label>
+                    <input class="form-control" id="00N7j000002BKgW" maxlength="255" name="00N7j000002BKgW" size="50" type="text" />
+                </div>
+
+                <!-- Subfuente -->
+                <div class="form-group col-6">
+                    <label for="00N7j000002BKgb">Subfuente</label>
+                    <input class="form-control" id="00N7j000002BKgb" maxlength="255" name="00N7j000002BKgb" size="50" type="text" />
+                </div>
+
+                <!-- 00N7j000002BfkF -->
+                <div class="form-group col-6">
+                    <label for="00N7j000002BfkF">Campaña</label>
+                    <input class="form-control" id="00N7j000002BfkF" maxlength="255" name="00N7j000002BfkF" size="50" type="text" />
+                </div>            
+
+            <script>
+                // Función para obtener los parámetros UTM de la URL
+                function getUTMParameters() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const utmSource = urlParams.get('utm_source') || '';
+                    const utmMedium = urlParams.get('utm_medium') || '';
+                    const utmCampaign = urlParams.get('utm_campaign') || '';
+
+                    // Actualizar los campos del formulario con los valores UTM
+                    document.getElementById('00N7j000002BKgW').value = utmSource;
+                    document.getElementById('00N7j000002BKgb').value = utmMedium;
+                    document.getElementById('00N7j000002BfkF').value = utmCampaign;
+                }
+
+                // Llamar a la función al cargar la página
+                getUTMParameters();
+            </script>
+                
+                
+                    <!--Codigo SAE-->
+                    <div class="form-group col-6">
+                        <label for="00N7j000002BI3p">Código SAE:</label>
+                        <input class="form-control" id="00N7j000002BI3p" maxlength="5" name="00N7j000002BI3p" size="20" type="text"/>
+                    </div>
+                    
+                </div>
+
+                <p>Autorizas el uso de <a href=""> tus datos personales</a></p>
+                <div class="form-row">
+                    <div class="form-check" style="margin-left: 20px;">
+                        <input id="data_auth" class="form-check-input" name="00N7j000002BI3m" type="checkbox" value="1" required="">                    
+                        <label class="form-check-label" for="data_auth">Si</label>                    
+                    </div>
+    
+                    <div class="form-check" style="margin-left: 20px;">
+                        <input class="form-check-input" type="checkbox">                    
+                        <label class="form-check-label">No</label>                    
+                    </div>
+                </div>
+                
+
+                <button type="submit" class="btn btn-primary mt-3" name="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Agregar enlace a Bootstrap JS y jQuery aquí -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
