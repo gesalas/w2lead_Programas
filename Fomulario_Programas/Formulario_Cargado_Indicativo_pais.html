@@ -126,9 +126,8 @@
                     
                     <!--prefijo-->   
                     <div class="input-group col-6">                        
-                        <select id="#" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 col-2"
-                        name="00N7j000002BI3X" required="">
-                        <option value="">+57</option>      
+                        <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 col-2" required style="font-size: small; padding:0px 5px;">
+                        <option value="">Selecciona</option>
                         </select>                       
                         <input placeholder="*Teléfono celular" id="mobile" min="9999999"
                             class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="40"
@@ -182,7 +181,7 @@
         
                 
                 <!--origen IMPORTANTE debe estar oculto-->
-                <div class="form-row" style="display: none;">
+                <div class="form-row" style="display: block;">
                     <div class="form-group col-6">
                         <label for="lead_source">Origen del candidato</label>
                         <input class="form-control" id="lead_source" maxlength="255" name="lead_source" size="50" type="hidden" style="display: none;"
@@ -196,7 +195,7 @@
                     <!--Codigo SAE-->
                     <div class="form-group">
                         <label for="00N7j000002BI3p">Código SAE</label>
-                        <input id="00N7j000002BI3p" class="form-control" maxlength="5" name="00N7j000002BI3p" size="20" type="text" value="ANTRO">
+                        <input id="00N7j000002BI3p" class="form-control" maxlength="5" name="00N7j000002BI3p" size="20" type="text">
                     </div>
                 </div>
         
@@ -456,18 +455,14 @@
             }
         
             // Llamar a la función al cargar la página
-            cargarOpciones();
-            
-            // Resetear todos los campos del formulario al cargar la página
-            document.getElementById("main_form").reset();
+            cargarOpciones();            
+
+                // Resetear todos los campos del formulario al cargar la página
+                document.getElementById("main_form").reset();
             
         </script>
         
         <script>
-           
-        
-            
-        
             // retURL
         
             // Función para obtener los parámetros UTM de la URL
@@ -487,6 +482,47 @@
         
             // Llamar a la función al cargar la página
             getUTMParameters();
+
+            //Variable seleccionar indicativo
+            const selectIndicativo = document.getElementById('00NO4000002lUPh');
+
+            //Seleccionar codigo de pais
+            function codigoDePais(){                
+                fetch('/JSON/codigos_pais.json')
+                .then(response => response.json())
+                .then(data => {                                
+                    data.forEach(pais => {                                                
+                        const option = document.createElement('option');                        
+                        option.value = pais.phoneCode;
+                        option.text = (pais.phoneCode + " ... " + pais.nameES);
+
+                        //Fondo:
+                        if (pais.nameES === 'Colombia') {
+                            option.style.backgroundColor = 'aliceBlue';
+                            option.style.color = '#000000';
+                        }
+                        selectIndicativo.appendChild(option);                                                                                                                 
+                    });                
+                    
+                })
+                .catch(error => console.error('Error al cargar los países:', error));
+                console.log("Cualquier cosa");
+            };
+            console.log(selectIndicativo.value)
+            //codigoDePais();
+
+            codigoDePais();
+
+            var codigoSae = document.getElementById("00N7j000002BI3p");
+            codigoSae.value = codPrograma;
+
+
+            /*selectIndicativo.addEventListener('change', () => {
+                if(selectIndicativo.value === "1"){
+                    selectIndicativo.textContent = selectIndicativo.value;
+                };
+            });*/
+            
         </script>
     
 </body>
