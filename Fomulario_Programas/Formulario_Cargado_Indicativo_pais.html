@@ -181,7 +181,7 @@
         
                 
                 <!--origen IMPORTANTE debe estar oculto-->
-                <div class="form-row" style="display: block;">
+                <div class="form-row" style="display: none;">
                     <div class="form-group col-6">
                         <label for="lead_source">Origen del candidato</label>
                         <input class="form-control" id="lead_source" maxlength="255" name="lead_source" size="50" type="hidden" style="display: none;"
@@ -488,7 +488,7 @@
 
             //Seleccionar codigo de pais
             function codigoDePais(){                
-                fetch('https://raw.githubusercontent.com/gesalas/w2lead_Programas/main/Fomulario_Programas/JSON/codigos_pais.json?token=GHSAT0AAAAAACQ45TDV3QQBUQ5AIFCAS4V2ZQ5PTKQ')
+                fetch('/recursosdb/1372208/10609114/codigos_pais.json/4733fa76-c07d-e51e-dcc0-0271cc2cdc2e?t=1713212607975')
                 .then(response => response.json())
                 .then(data => {                                
                     data.forEach(pais => {                                                
