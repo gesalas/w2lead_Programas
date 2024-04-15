@@ -1,0 +1,478 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTA: Agregue el siguiente elemento <META> a su página <HEAD>.  Si es   -->
+<!--  preciso, modifique el parámetro charset para especificar el conjunto    -->
+<!--  de caracteres de su página HTML.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTA: Agregue el siguiente elemento <FORM> a su página.                 -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D7j0000004eQD" method="POST">
+
+<input type=hidden name="oid" value="00D7j0000004eQD">
+<input type=hidden name="retURL" value="https://unijaveriana--prue7feb23.sandbox.lightning.force.com/lightning/setup/LeadWebtoleads/page?address=%2F_ui%2Fcommon%2Fconfig%2Fentity%2FWebToLeadUi%2Fe%3FretURL%3D%252Flead%252Fleadcapture.jsp%26setupid%3DLeadWebtoleads">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTA: Estos campos son elementos de depuración opcionales. Elimine      -->
+<!--  los comentarios de estas líneas si desea realizar una prueba en el      -->
+<!--  modo de depuración.                                                     -->
+<input type="hidden" name="debug" value=1>
+<input type="hidden" name="debugEmail"
+value="mfalcon@freewayconsulting.com">
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //O falso
+		embedded_svc.settings.language = ''; //Por ejemplo, introduzca 'en' o 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Toma como valor predeterminado Sesión de chat con un experto)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Toma como valor predeterminado Agente sin conexión)
+
+		//embedded_svc.settings.loadingText = ''; //(Toma como valor predeterminado Cargando)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Establece el dominio para su desarrollo de modo que los visitantes puedan navegar por subdominios durante una sesión de chat)
+
+		// Configuración para Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Establece la cumplimentación automática de los campos del formulario previo al chat
+		//embedded_svc.settings.fallbackRouting = []; //Una matriz de identificadores de botones, de usuario o userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Toma como valor predeterminado la opción Contacto)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://unijaveriana--prue7feb23.sandbox.my.salesforce.com',
+			'https://unijaveriana--prue7feb23.sandbox.my.salesforce-sites.com/',
+			gslbBaseURL,
+			'00D7j0000004eQD',
+			'Agentes_Chatbot',
+			{
+				baseLiveAgentContentURL: 'https://c.la2s-core1.sfdc-yfeipo.salesforceliveagent.com/content',
+				deploymentId: '572O4000000G0wv',
+				buttonId: '573O40000003Y3Z',
+				baseLiveAgentURL: 'https://d.la2s-core1.sfdc-yfeipo.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'Agentes_Chatbot',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://unijaveriana--prue7feb23.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+
+<form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+<input type=hidden name="oid" value="00D7j0000004eQD">
+<input type=hidden name="retURL" value="https://www.javeriana.edu.co/thank-you-page-ciencias-sociales-pre">
+
+GENERICO
+<br>
+<br>
+
+<label for="first_name">Nombre</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+
+<label for="last_name">Apellidos</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+
+Tipo documento identidad:<select  id="00N7j000002BI3X" name="00N7j000002BI3X" title="Tipo documento identidad"><option value="">--Ninguno--</option><option value="DR">Documento RAI</option>
+<option value="A_ID">Anterior ID (Doble ID)</option>
+<option value="N_ID">Nuevo ID (Doble ID)</option>
+<option value="CR">Contraseña Registraduria</option>
+<option value="LM">Libreta Militar</option>
+<option value="CC">Cédula Ciudadanía</option>
+<option value="CE">Cédula Extranjería</option>
+<option value="NIT">No Identificación Tributaria</option>
+<option value="PA">Pasaporte</option>
+<option value="SE">Sin Especificar</option>
+<option value="TI">Tarjeta Identidad</option>
+<option value="NUIP">Nro Único de Identific Persona</option>
+<option value="CP">Carné Diplomarico</option>
+<option value="CG">Consecutivo Grados</option>
+<option value="CI">Cedula de Identidad</option>
+<option value="EX">Extranjería</option>
+<option value="OD">Otro Documento</option>
+<option value="PEP">Permiso Especial Permanencia</option>
+<option value="PTP">Permiso Temporal Protección</option>
+</select><br>
+
+Número documento identidad:<input  id="00N7j000002BI3V" maxlength="255" name="00N7j000002BI3V" size="20" type="text" /><br>
+
+<label for="email">Correo electrónico</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+Código de país - Móvil:<input  id="00NO4000002lUPh" name="00NO4000002lUPh" size="20" type="text" /><br>
+
+<label for="mobile">Móvil</label><input  id="mobile" maxlength="40" name="mobile" size="20" type="text" value="1234567890" /><br>
+
+Tipo de Asistente:<select  id="00NO40000000sTR" name="00NO40000000sTR" title="Tipo de Asistente">
+<option value="Aspirante">Aspirante</option>
+</select><br>
+
+Autorización de datos personales:<input  id="00N7j000002BI3m" name="00N7j000002BI3m" type="checkbox" value="1" /><br>
+
+Fuente:<select  id="00N7j000002BKgW" name="00N7j000002BKgW" title="Fuente"><option value="">--Ninguno--</option><option value="Comercial">Comercial</option>
+<option value="Contenidos">Contenidos</option>
+<option value="Convenios">Convenios</option>
+<option value="Facultades">Facultades</option>
+<option value="Javeriana">Javeriana</option>
+<option value="Nods">Nods</option>
+<option value="Pangea">Pangea</option>
+<option value="Relacionamiento">Relacionamiento</option>
+<option value="Rocket Leads">Rocket Leads</option>
+<option value="Digital">Digital</option>
+<option value="Financiación">Financiación</option>
+<option value="El Rey">El Rey</option>
+<option value="Expojaveriana">Expojaveriana</option>
+</select><br>
+
+Subfuente:<select  id="00N7j000002BKgb" name="00N7j000002BKgb" title="Subfuente">
+<option value="">--Ninguno--</option><option value="Aspirante Interesado">Aspirante Interesado</option>
+<option value="Estudiante Activo">Estudiante Activo</option>
+<option value="Campaña Financiación">Campaña Financiación</option>
+<option value="Campaña">Campaña</option>
+<option value="Campaña Inbound">Campaña Inbound</option>
+<option value="Cursos y Carreras">Cursos y Carreras</option>
+<option value="Eloqua">Eloqua</option>
+<option value="Estudiante Actual">Estudiante Actual</option>
+<option value="Eventos">Eventos</option>
+<option value="Expojaveriana">Expojaveriana</option>
+<option value="Facebook">Facebook</option>
+<option value="Google">Google</option>
+<option value="Instagram">Instagram</option>
+<option value="Orgánico">Orgánico</option>
+<option value="Otras Fuentes">Otras Fuentes</option>
+<option value="Referido Lead BD">Referido Lead BD</option>
+<option value="Rocket Leads">Rocket Leads</option>
+<option value="Sin Subfuente">Sin Subfuente</option>
+<option value="Undefined">Undefined</option>
+<option value="Universia">Universia</option>
+<option value="Whatsapp">Whatsapp</option>
+<option value="Email">Email</option>
+</select><br>
+
+Fuente autorización datos personales:<select  id="00N7j000002BY26" name="00N7j000002BY26" title="Fuente autorización datos personales">
+<option value="">--Ninguno--</option><option value="Landing Programas">Landing Programas</option>
+<option value="Landing Eventos">Landing Eventos</option>
+<option value="Landing Expojaveriana">Landing Expojaveriana</option>
+</select><br>
+
+Medio:<select  id="00NO40000001izt" name="00NO40000001izt" title="Medio">
+<option value="">--Ninguno--</option><option value="ARQDI">ARQDI</option>
+<option value="ARTES">ARTES</option>
+<option value="Artículos_linkedIn">Artículos_linkedIn</option>
+<option value="Atención 1ª1">Atención 1ª1</option>
+<option value="Audio_spotify">Audio_spotify</option>
+<option value="Banners_youtube">Banners_youtube</option>
+<option value="Brand_Takeover_Tik_Tok">Brand_Takeover_Tik_Tok</option>
+<option value="Caledario_evento">Caledario_evento</option>
+<option value="CANON">CANON</option>
+<option value="CCIAS">CCIAS</option>
+<option value="CECON">CECON</option>
+<option value="CJURD">CJURD</option>
+<option value="COMLE">COMLE</option>
+<option value="Consejeros">Consejeros</option>
+<option value="Contacto">Contacto</option>
+<option value="Convenios">Convenios</option>
+<option value="Correo">Correo</option>
+<option value="CPOLT">CPOLT</option>
+<option value="CSOCL">CSOCL</option>
+<option value="destacado_intranet">destacado_intranet</option>
+<option value="Display">Display</option>
+<option value="Display_spotify">Display_spotify</option>
+<option value="EDUCN">EDUCN</option>
+<option value="Encuestas_linkedIn">Encuestas_linkedIn</option>
+<option value="ENFER">ENFER</option>
+<option value="evento_site_relacionamieto">evento_site_relacionamieto</option>
+<option value="Eventos_linkedIn">Eventos_linkedIn</option>
+<option value="FEARS">FEARS</option>
+<option value="FILOS">FILOS</option>
+<option value="Historias_facebook">Historias_facebook</option>
+<option value="Historias_Instagram">Historias_Instagram</option>
+<option value="IGTV_Instagram">IGTV_Instagram</option>
+<option value="in-feed_Tik_Tok">in-feed_Tik_Tok</option>
+<option value="INGEN">INGEN</option>
+<option value="MEDIC">MEDIC</option>
+<option value="Noticia_home_institucional">Noticia_home_institucional</option>
+<option value="ODONT">ODONT</option>
+<option value="Pantallas_Institucionales">Pantallas_Institucionales</option>
+<option value="PENSA">PENSA</option>
+<option value="PER-ADN">PER-ADN</option>
+<option value="PER-ADN_Tu_Parche">PER-ADN_Tu_Parche</option>
+<option value="PER-Bogota_Daily ">PER-Bogota_Daily </option>
+<option value="PER-Deporte_y_Negocios ">PER-Deporte_y_Negocios </option>
+<option value="PER-Diario_de_Valledupar ">PER-Diario_de_Valledupar </option>
+<option value="PER-Diario_del_Huila ">PER-Diario_del_Huila </option>
+<option value="PER-Diario_del_Huila Neiva">PER-Diario_del_Huila Neiva</option>
+<option value="PER-Diario_del_Otún ">PER-Diario_del_Otún </option>
+<option value="PER-Diario_Deportivo ">PER-Diario_Deportivo </option>
+<option value="PER-Diario_Occidente ">PER-Diario_Occidente </option>
+<option value="PER-El_Colombiano ">PER-El_Colombiano </option>
+<option value="PER-El_Diario_del_Otún ">PER-El_Diario_del_Otún </option>
+<option value="PER-El_Envigadeño ">PER-El_Envigadeño </option>
+<option value="PER-El_Espectador ">PER-El_Espectador </option>
+<option value="PER-El_Heraldo ">PER-El_Heraldo </option>
+<option value="PER-El_Liberal ">PER-El_Liberal </option>
+<option value="PER-El_Malpensante ">PER-El_Malpensante </option>
+<option value="PER-El_Mundo ">PER-El_Mundo </option>
+<option value="PER-El_Nuevo_Día ">PER-El_Nuevo_Día </option>
+<option value="PER-El_País ">PER-El_País </option>
+<option value="PER-El_Periodico_de_Zalamea">PER-El_Periodico_de_Zalamea</option>
+<option value="PER-El_Tabloide ">PER-El_Tabloide </option>
+<option value="PER-El_Tiempo ">PER-El_Tiempo </option>
+<option value="PER-El_Universal ">PER-El_Universal </option>
+<option value="PER-El_Vallenato ">PER-El_Vallenato </option>
+<option value="PER-Eureka! ">PER-Eureka! </option>
+<option value="PER-La_Crónica ">PER-La_Crónica </option>
+<option value="PER-La_Crónica_del_Quindío ">PER-La_Crónica_del_Quindío </option>
+<option value="PER-La_Libertad ">PER-La_Libertad </option>
+<option value="PER-La_Nación ">PER-La_Nación </option>
+<option value="PER-La_Opinión ">PER-La_Opinión </option>
+<option value="PER-La_Patria ">PER-La_Patria </option>
+<option value="PER-La_República ">PER-La_República </option>
+<option value="PER-La_Tarde ">PER-La_Tarde </option>
+<option value="PER-Noticias_Ya ">PER-Noticias_Ya </option>
+<option value="PER-Portafolio">PER-Portafolio</option>
+<option value="PER-Portafolio ">PER-Portafolio </option>
+<option value="PER-Prensa_Verde ">PER-Prensa_Verde </option>
+<option value="PER-The_Colombian_Post">PER-The_Colombian_Post</option>
+<option value="PER-Valledupar_Hoy ">PER-Valledupar_Hoy </option>
+<option value="PER-Vanguardia_Liberal ">PER-Vanguardia_Liberal </option>
+<option value="PER-Vice_Versa ">PER-Vice_Versa </option>
+<option value="Post_facebook">Post_facebook</option>
+<option value="Post_linkedIn">Post_linkedIn</option>
+<option value="Programatic">Programatic</option>
+<option value="PSICL">PSICL</option>
+<option value="RAD-88.9_Super_Stereo ">RAD-88.9_Super_Stereo </option>
+<option value="RAD-Amor_Estéreo_">RAD-Amor_Estéreo_</option>
+<option value="RAD-Antena_2_">RAD-Antena_2_</option>
+<option value="RAD-Banana_Stereo ">RAD-Banana_Stereo </option>
+<option value="RAD-Cadena_Súper">RAD-Cadena_Súper</option>
+<option value="RAD-Caracol_-_Columbia ">RAD-Caracol_-_Columbia </option>
+<option value="RAD-Caracol_Cadena_Basica ">RAD-Caracol_Cadena_Basica </option>
+<option value="RAD-Caracol_Cadena_Estereo _">RAD-Caracol_Cadena_Estereo _</option>
+<option value="RAD-Caracol_Miami  ">RAD-Caracol_Miami  </option>
+<option value="RAD-Clasica ">RAD-Clasica </option>
+<option value="RAD-Corazon_Estereo ">RAD-Corazon_Estereo </option>
+<option value="RAD-El_Mundo_Diners ">RAD-El_Mundo_Diners </option>
+<option value="RAD-Emisora_Cultural_Remigio_Antonio_Cañarte ">RAD-Emisora_Cultural_Remigio_Antonio_Cañarte </option>
+<option value="RAD-FM_Sinigual ">RAD-FM_Sinigual </option>
+<option value="RAD-HJCK ">RAD-HJCK </option>
+<option value="RAD-Javeriana_Estereo ">RAD-Javeriana_Estereo </option>
+<option value="RAD-La_FM ">RAD-La_FM </option>
+<option value="RAD-La_Mega ">RAD-La_Mega </option>
+<option value="RAD-La_Mega_106.7_">RAD-La_Mega_106.7_</option>
+<option value="RAD-La_Mega_del_Café">RAD-La_Mega_del_Café</option>
+<option value="RAD-La_Mía ">RAD-La_Mía </option>
+<option value="RAD-La_Vallenata ">RAD-La_Vallenata </option>
+<option value="RAD-La_X ">RAD-La_X </option>
+<option value="RAD-La_Z ">RAD-La_Z </option>
+<option value="RAD-Olímpica_Stereo ">RAD-Olímpica_Stereo </option>
+<option value="RAD-Oxigeno ">RAD-Oxigeno </option>
+<option value="RAD-Radio_Activa ">RAD-Radio_Activa </option>
+<option value="RAD-Radio_Bolivariana_A.M ">RAD-Radio_Bolivariana_A.M </option>
+<option value="RAD-Radio_Bolivariana_F.M. ">RAD-Radio_Bolivariana_F.M. </option>
+<option value="RAD-Radio_Caracol ">RAD-Radio_Caracol </option>
+<option value="RAD-Radio_Klaridad ">RAD-Radio_Klaridad </option>
+<option value="RAD-Radio_Maria ">RAD-Radio_Maria </option>
+<option value="RAD-Radio_Q ">RAD-Radio_Q </option>
+<option value="RAD-Radio_Santander_">RAD-Radio_Santander_</option>
+<option value="RAD-Radio_Unica ">RAD-Radio_Unica </option>
+<option value="RAD-Radio_Uno ">RAD-Radio_Uno </option>
+<option value="RAD-Radio_Uno_">RAD-Radio_Uno_</option>
+<option value="RAD-Radioactiva ">RAD-Radioactiva </option>
+<option value="RAD-Radiodifusora_Nacional_Clasica ">RAD-Radiodifusora_Nacional_Clasica </option>
+<option value="RAD-Radiodifusora_Nacional_de_Colombia_Bogota ">RAD-Radiodifusora_Nacional_de_Colombia_Bogota </option>
+<option value="RAD-Radiodifusora_Nacional_de_Colombia_Internacional ">RAD-Radiodifusora_Nacional_de_Colombia_Internacional </option>
+<option value="RAD-Radiodifusora_Nacional_Joven ">RAD-Radiodifusora_Nacional_Joven </option>
+<option value="RAD-RCN_Básica ">RAD-RCN_Básica </option>
+<option value="RAD-RCN_Internacional ">RAD-RCN_Internacional </option>
+<option value="RAD-RCN_Radio ">RAD-RCN_Radio </option>
+<option value="RAD-Rumba_Stereo_">RAD-Rumba_Stereo_</option>
+<option value="RAD-Sensación_Stéreo ">RAD-Sensación_Stéreo </option>
+<option value="RAD-Sunset_Radio">RAD-Sunset_Radio</option>
+<option value="RAD-Super_Estación ">RAD-Super_Estación </option>
+<option value="RAD-Super_Estacion_Columbia ">RAD-Super_Estacion_Columbia </option>
+<option value="RAD-Todelar_Cadena_Nacional">RAD-Todelar_Cadena_Nacional</option>
+<option value="RAD-Tolima_F.M._Estereo ">RAD-Tolima_F.M._Estereo </option>
+<option value="RAD-Tropicana_Stereo ">RAD-Tropicana_Stereo </option>
+<option value="RAD-UM-FM ">RAD-UM-FM </option>
+<option value="RAD-Univalle_Estereo ">RAD-Univalle_Estereo </option>
+<option value="RAD-Univalle_Estereo_105.3_FM ">RAD-Univalle_Estereo_105.3_FM </option>
+<option value="RAD-Vercruz_Estereo ">RAD-Vercruz_Estereo </option>
+<option value="Reels_Instagram">Reels_Instagram</option>
+<option value="REV-Actualidad_Colombiana">REV-Actualidad_Colombiana</option>
+<option value="REV-Actualidad_Colombiana ">REV-Actualidad_Colombiana </option>
+<option value="REV-Apunte_Empresarial">REV-Apunte_Empresarial</option>
+<option value="REV-Aviación  ">REV-Aviación  </option>
+<option value="REV-Axxis arquitectura,_diseño,_decoración">REV-Axxis arquitectura,_diseño,_decoración</option>
+<option value="REV-Cambio ">REV-Cambio </option>
+<option value="REV-Ciber_World_Design">REV-Ciber_World_Design</option>
+<option value="REV-Colgado informática">REV-Colgado informática</option>
+<option value="REV-Colombia_Report análisis_político,_en_inglés">REV-Colombia_Report análisis_político,_en_inglés</option>
+<option value="REV-ColSports">REV-ColSports</option>
+<option value="REV-Computer_World">REV-Computer_World</option>
+<option value="REV-Cromos ">REV-Cromos </option>
+<option value="REV-Cromos interés_general">REV-Cromos interés_general</option>
+<option value="REV-Descifrado política_y_negocios">REV-Descifrado política_y_negocios</option>
+<option value="REV-DesHora">REV-DesHora</option>
+<option value="REV-Diario_Deportivo">REV-Diario_Deportivo</option>
+<option value="REV-Dinero ">REV-Dinero </option>
+<option value="REV-Dinero finanzas">REV-Dinero finanzas</option>
+<option value="REV-Editorial_Televisa_Colombia ">REV-Editorial_Televisa_Colombia </option>
+<option value="REV-El_Grafito cultura">REV-El_Grafito cultura</option>
+<option value="REV-El_Mundo_al_Instante periodismo">REV-El_Mundo_al_Instante periodismo</option>
+<option value="REV-El_Tabloide ">REV-El_Tabloide </option>
+<option value="REV-En_La_Jugada">REV-En_La_Jugada</option>
+<option value="REV-En_Rodaje cine,_televisión,_fotografía">REV-En_Rodaje cine,_televisión,_fotografía</option>
+<option value="REV-Enter suplemento_de_informática_de_El_Tiempo">REV-Enter suplemento_de_informática_de_El_Tiempo</option>
+<option value="REV-Entreextremos cine_colombiano">REV-Entreextremos cine_colombiano</option>
+<option value="REV-Epígrafe cultura">REV-Epígrafe cultura</option>
+<option value="REV-Gatopardo interés_general">REV-Gatopardo interés_general</option>
+<option value="REV-Gerente">REV-Gerente</option>
+<option value="REV-Gran_Martes">REV-Gran_Martes</option>
+<option value="REV-Internet_Al_Día">REV-Internet_Al_Día</option>
+<option value="REV-La_Hoja_de_Medellín ">REV-La_Hoja_de_Medellín </option>
+<option value="REV-La_Nota_Económica economía">REV-La_Nota_Económica economía</option>
+<option value="REV-La_Red">REV-La_Red</option>
+<option value="REV-Las_Sociales celebridades">REV-Las_Sociales celebridades</option>
+<option value="REV-Lautopista arte_y_cultura">REV-Lautopista arte_y_cultura</option>
+<option value="REV-Legis">REV-Legis</option>
+<option value="REV-Market_Colombia">REV-Market_Colombia</option>
+<option value="REV-MAX  ">REV-MAX  </option>
+<option value="REV-Multirevistas_Editores_S.A. ">REV-Multirevistas_Editores_S.A. </option>
+<option value="REV-Nogal">REV-Nogal</option>
+<option value="REV-Nuevo_Estadio">REV-Nuevo_Estadio</option>
+<option value="REV-Nuevo_Estadio deportes">REV-Nuevo_Estadio deportes</option>
+<option value="REV-P_&amp;_M Publicidad_y_Mercado">REV-P_&amp;_M Publicidad_y_Mercado</option>
+<option value="REV-Paso_Beat hipismo">REV-Paso_Beat hipismo</option>
+<option value="REV-PC_World computación">REV-PC_World computación</option>
+<option value="REV-Planeta_Macondo cultura">REV-Planeta_Macondo cultura</option>
+<option value="REV-Portafolio">REV-Portafolio</option>
+<option value="REV-Portafolio ">REV-Portafolio </option>
+<option value="REV-Prensa_Verde ">REV-Prensa_Verde </option>
+<option value="REV-Revista_AXXIS arquitectura_y_diseño">REV-Revista_AXXIS arquitectura_y_diseño</option>
+<option value="REV-Revista_Contacto cultura">REV-Revista_Contacto cultura</option>
+<option value="REV-Revista_de_Motos ">REV-Revista_de_Motos </option>
+<option value="REV-Revista_Diners">REV-Revista_Diners</option>
+<option value="REV-Revista_Inmuebles construcciones">REV-Revista_Inmuebles construcciones</option>
+<option value="REV-Revista_Moda_en_Línea moda">REV-Revista_Moda_en_Línea moda</option>
+<option value="REV-Revista_Motor automovilismo">REV-Revista_Motor automovilismo</option>
+<option value="REV-Revista_Número cultura">REV-Revista_Número cultura</option>
+<option value="REV-Revista_Prometeo  ">REV-Revista_Prometeo  </option>
+<option value="REV-Revista_Temas ciencias_sociales,_Universidad_Santo_Tomás_de_Bucamaranga)">REV-Revista_Temas ciencias_sociales,_Universidad_Santo_Tomás_de_Bucamaranga)</option>
+<option value="REV-Salud_Colombia salud">REV-Salud_Colombia salud</option>
+<option value="REV-Seguridad_Social_al_Día seguridad_social">REV-Seguridad_Social_al_Día seguridad_social</option>
+<option value="REV-Semana ">REV-Semana </option>
+<option value="REV-Ser_Familia familia">REV-Ser_Familia familia</option>
+<option value="REV-Shock rock">REV-Shock rock</option>
+<option value="REV-Soho">REV-Soho</option>
+<option value="REV-Sonotone cultura">REV-Sonotone cultura</option>
+<option value="REV-Sports_Colombia deportes">REV-Sports_Colombia deportes</option>
+<option value="REV-Tendencias ciencias_económicas,_Universidad_de_Nariño">REV-Tendencias ciencias_económicas,_Universidad_de_Nariño</option>
+<option value="REV-Tiempos_del_Mundo ">REV-Tiempos_del_Mundo </option>
+<option value="REV-Toros_y_Toreros  ">REV-Toros_y_Toreros  </option>
+<option value="REV-Tres_Ojos cultura">REV-Tres_Ojos cultura</option>
+<option value="REV-Vladdomanía humor">REV-Vladdomanía humor</option>
+<option value="REV-Zona_Girante música_contemporánea">REV-Zona_Girante música_contemporánea</option>
+<option value="SALPU">SALPU</option>
+<option value="Search">Search</option>
+<option value="Secuencias_facebook">Secuencias_facebook</option>
+<option value="TEOLG">TEOLG</option>
+<option value="TopView_Tik_Tok">TopView_Tik_Tok</option>
+<option value="TrueView_youtube">TrueView_youtube</option>
+<option value="TV-Cadena_Uno ">TV-Cadena_Uno </option>
+<option value="TV-Canal_A ">TV-Canal_A </option>
+<option value="TV-Canal_Capital">TV-Canal_Capital</option>
+<option value="TV-Canal_RCN ">TV-Canal_RCN </option>
+<option value="TV-Caracol_Televisión ">TV-Caracol_Televisión </option>
+<option value="TV-Colombiana_de_Television">TV-Colombiana_de_Television</option>
+<option value="TV-DirecTV_Columbia">TV-DirecTV_Columbia</option>
+<option value="TV-EPM_TV ">TV-EPM_TV </option>
+<option value="TV-Olympica_TV ">TV-Olympica_TV </option>
+<option value="TV-RTV_Televisión">TV-RTV_Televisión</option>
+<option value="TV-Sky_Televisión_Satelital">TV-Sky_Televisión_Satelital</option>
+<option value="TV-Teleantioquia">TV-Teleantioquia</option>
+<option value="TV-Telearmenia">TV-Telearmenia</option>
+<option value="TV-TeleMedellin ">TV-TeleMedellin </option>
+<option value="TV-Telepacifico">TV-Telepacifico</option>
+<option value="TV-Televid">TV-Televid</option>
+<option value="TV-TV_Cable _">TV-TV_Cable _</option>
+<option value="TV-TV_Hoy ">TV-TV_Hoy </option>
+<option value="VICERREC">VICERREC</option>
+<option value="Video_facebook">Video_facebook</option>
+<option value="Video_linkedIn">Video_linkedIn</option>
+<option value="Video_spotify">Video_spotify</option>
+<option value="Vivo_facebook">Vivo_facebook</option>
+<option value="Vivo_Instagram">Vivo_Instagram</option>
+<option value="Vivo_linkedIn">Vivo_linkedIn</option>
+<option value="Vivo_Tik_Tok">Vivo_Tik_Tok</option>
+<option value="WEB-El_Diario_On-Line">WEB-El_Diario_On-Line</option>
+<option value="WEB-El_Periódico_Digital">WEB-El_Periódico_Digital</option>
+<option value="WEB-Enlajugada">WEB-Enlajugada</option>
+<option value="WEB-Farandula  ">WEB-Farandula  </option>
+<option value="WEB-Gestion_Negocios">WEB-Gestion_Negocios</option>
+<option value="WEB-InET ">WEB-InET </option>
+<option value="WEB-InternetAldia">WEB-InternetAldia</option>
+<option value="WEB-Latin-It ">WEB-Latin-It </option>
+<option value="WEB-loschismes">WEB-loschismes</option>
+<option value="WEB-Mal_Pensante">WEB-Mal_Pensante</option>
+<option value="WEB-Moda_en_Línea moda">WEB-Moda_en_Línea moda</option>
+<option value="WEB-Prensa_Net">WEB-Prensa_Net</option>
+<option value="WEB-Pulzo">WEB-Pulzo</option>
+<option value="WEB-RadioNet ">WEB-RadioNet </option>
+<option value="WEB-Religion_Digital">WEB-Religion_Digital</option>
+<option value="WEB-Santa_Marta_Online ">WEB-Santa_Marta_Online </option>
+<option value="WEB-TVHoy  ">WEB-TVHoy  </option>
+<option value="WEB-Vía_Alterna">WEB-Vía_Alterna</option>
+</select><br>
+
+Código de país:<input  id="00N7j000002BY1c" maxlength="20" name="00N7j000002BY1c" size="20" type="text" value="COL" /><br>
+
+Código de Estado:<input  id="00N7j000002BY1h" maxlength="20" name="00N7j000002BY1h" size="20" type="text" value="BOG" /><br>
+
+Id Ciudad:<input  id="00N7j000002BY1i" maxlength="18" name="00N7j000002BY1i" size="20" type="text" value="11001" /><br>
+
+Código SAE:<input  id="00N7j000002BI3p" maxlength="5" name="00N7j000002BI3p" size="20" type="text" value="ARQUI"/><br>
+
+Código Periodo Esperado de Ingreso:<input  id="00N7j000002BY2L" maxlength="20" name="00N7j000002BY2L" size="20" type="text" value="GRAD2430" /><br>
+
+<label for="company">Compañía</label><input  id="company" maxlength="40" name="company" size="20" type="text" value="Compañia"/><br>
+
+Id Campaña:<input  id="00N7j000002BfkF" maxlength="255" name="00N7j000002BfkF" size="50" type="text" /><br>
+
+<label for="lead_source">Origen del candidato</label>
+<select  id="lead_source" name="lead_source">
+<option value="Landing Pages">Landing Pages</option>
+</select><br>
+
+Origen de la Solicitud:<select  id="00NO40000002ZeP" name="00NO40000002ZeP" title="Origen de la Solicitud">
+<option value="Web to Lead">Web to Lead</option>
+</select><br>
+
+<input type="submit" name="submit">
+
+</form>
