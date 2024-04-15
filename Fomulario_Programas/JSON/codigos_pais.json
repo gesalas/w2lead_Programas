@@ -1,6 +1,13 @@
 [
     {
-      "nameES": "Afganist&#xE1;n",
+        "nameES": "Colombia",
+        "nameEN": "Colombia",
+        "iso2": "CO",
+        "iso3": "COL",
+        "phoneCode": "57"
+      },
+    {
+      "nameES": "Afganistán",
       "nameEN": "Afghanistan",
       "iso2": "AF",
       "iso3": "AFG",
@@ -42,7 +49,7 @@
       "phoneCode": "1 264"
     },
     {
-      "nameES": "Ant&#xE1;rtida",
+      "nameES": "Antártida",
       "nameEN": "Antarctica",
       "iso2": "AQ",
       "iso3": "ATA",
@@ -105,14 +112,14 @@
       "phoneCode": "43"
     },
     {
-      "nameES": "Azerbaiy&#xE1;n",
+      "nameES": "Azerbaiyán",
       "nameEN": "Azerbaijan",
       "iso2": "AZ",
       "iso3": "AZE",
       "phoneCode": "994"
     },
     {
-      "nameES": "B&#xE9;lgica",
+      "nameES": "Bélgica",
       "nameEN": "Belgium",
       "iso2": "BE",
       "iso3": "BEL",
@@ -154,14 +161,14 @@
       "phoneCode": "501"
     },
     {
-      "nameES": "Ben&#xED;n",
+      "nameES": "Benín",
       "nameEN": "Benin",
       "iso2": "BJ",
       "iso3": "BEN",
       "phoneCode": "229"
     },
     {
-      "nameES": "Bhut&#xE1;n",
+      "nameES": "Bhután",
       "nameEN": "Bhutan",
       "iso2": "BT",
       "iso3": "BTN",
@@ -210,7 +217,7 @@
       "phoneCode": "55"
     },
     {
-      "nameES": "Brun&#xE9;i",
+      "nameES": "Brunéi",
       "nameEN": "Brunei",
       "iso2": "BN",
       "iso3": "BRN",
@@ -252,14 +259,14 @@
       "phoneCode": "855"
     },
     {
-      "nameES": "Camer&#xFA;n",
+      "nameES": "Camerún",
       "nameEN": "Cameroon",
       "iso2": "CM",
       "iso3": "CMR",
       "phoneCode": "237"
     },
     {
-      "nameES": "Canad&#xE1;",
+      "nameES": "Canadá",
       "nameEN": "Canada",
       "iso2": "CA",
       "iso3": "CAN",
@@ -299,14 +306,7 @@
       "iso2": "VA",
       "iso3": "VAT",
       "phoneCode": "39"
-    },
-    {
-      "nameES": "Colombia",
-      "nameEN": "Colombia",
-      "iso2": "CO",
-      "iso3": "COL",
-      "phoneCode": "57"
-    },
+    },    
     {
       "nameES": "Comoras",
       "nameEN": "Comoros",
@@ -315,14 +315,14 @@
       "phoneCode": "269"
     },
     {
-      "nameES": "Rep&#xFA;blica del Congo",
+      "nameES": "República del Congo",
       "nameEN": "Republic of the Congo",
       "iso2": "CG",
       "iso3": "COG",
       "phoneCode": "242"
     },
     {
-      "nameES": "Rep&#xFA;blica Democr&#xE1;tica del Congo",
+      "nameES": "República Democrática del Congo",
       "nameEN": "Democratic Republic of the Congo",
       "iso2": "CD",
       "iso3": "COD",
@@ -372,7 +372,7 @@
     },
     {
       "nameES": "Curazao",
-      "nameEN": "Cura&#xE7;ao",
+      "nameEN": "Curaçao",
       "iso2": "CW",
       "iso3": "CWU",
       "phoneCode": "5999"
@@ -413,7 +413,7 @@
       "phoneCode": "503"
     },
     {
-      "nameES": "Emiratos &#xC1;rabes Unidos",
+      "nameES": "Emiratos Árabes Unidos",
       "nameEN": "United Arab Emirates",
       "iso2": "AE",
       "iso3": "ARE",
@@ -441,14 +441,14 @@
       "phoneCode": "386"
     },
     {
-      "nameES": "Espa&#xF1;a",
+      "nameES": "España",
       "nameEN": "Spain",
       "iso2": "ES",
       "iso3": "ESP",
       "phoneCode": "34"
     },
     {
-      "nameES": "Estados Unidos de Am&#xE9;rica",
+      "nameES": "Estados Unidos de América",
       "nameEN": "United States of America",
       "iso2": "US",
       "iso3": "USA",
@@ -462,7 +462,7 @@
       "phoneCode": "372"
     },
     {
-      "nameES": "Etiop&#xED;a",
+      "nameES": "Etiopía",
       "nameEN": "Ethiopia",
       "iso2": "ET",
       "iso3": "ETH",
@@ -497,7 +497,7 @@
       "phoneCode": "33"
     },
     {
-      "nameES": "Gab&#xF3;n",
+      "nameES": "Gabón",
       "nameEN": "Gabon",
       "iso2": "GA",
       "iso3": "GAB",
@@ -616,7 +616,7 @@
       "phoneCode": "592"
     },
     {
-      "nameES": "Hait&#xED;",
+      "nameES": "Haití",
       "nameEN": "Haiti",
       "iso2": "HT",
       "iso3": "HTI",
@@ -637,7 +637,7 @@
       "phoneCode": "852"
     },
     {
-      "nameES": "Hungr&#xED;a",
+      "nameES": "Hungría",
       "nameEN": "Hungary",
       "iso2": "HU",
       "iso3": "HUN",
@@ -658,7 +658,7 @@
       "phoneCode": "62"
     },
     {
-      "nameES": "Ir&#xE1;n",
+      "nameES": "Irán",
       "nameEN": "Iran",
       "iso2": "IR",
       "iso3": "IRN",
@@ -721,7 +721,7 @@
       "phoneCode": "1 441"
     },
     {
-      "nameES": "Islas Caim&#xE1;n",
+      "nameES": "Islas Caimán",
       "nameEN": "Cayman Islands",
       "iso2": "KY",
       "iso3": "CYM",
@@ -742,8 +742,8 @@
       "phoneCode": "682"
     },
     {
-      "nameES": "Islas de &#xC5;land",
-      "nameEN": "&#xC5;land Islands",
+      "nameES": "Islas de Åland",
+      "nameEN": "Åland Islands",
       "iso2": "AX",
       "iso3": "ALA",
       "phoneCode": "358"
@@ -805,7 +805,7 @@
       "phoneCode": "870"
     },
     {
-      "nameES": "Islas Salom&#xF3;n",
+      "nameES": "Islas Salomón",
       "nameEN": "Solomon Islands",
       "iso2": "SB",
       "iso3": "SLB",
@@ -826,14 +826,14 @@
       "phoneCode": "246"
     },
     {
-      "nameES": "Islas V&#xED;rgenes Brit&#xE1;nicas",
+      "nameES": "Islas Vírgenes Británicas",
       "nameEN": "Virgin Islands",
       "iso2": "VG",
       "iso3": "VGB",
       "phoneCode": "1 284"
     },
     {
-      "nameES": "Islas V&#xED;rgenes de los Estados Unidos",
+      "nameES": "Islas Vírgenes de los Estados Unidos",
       "nameEN": "United States Virgin Islands",
       "iso2": "VI",
       "iso3": "VIR",
@@ -861,7 +861,7 @@
       "phoneCode": "1 876"
     },
     {
-      "nameES": "Jap&#xF3;n",
+      "nameES": "Japón",
       "nameEN": "Japan",
       "iso2": "JP",
       "iso3": "JPN",
@@ -882,7 +882,7 @@
       "phoneCode": "962"
     },
     {
-      "nameES": "Kazajist&#xE1;n",
+      "nameES": "Kazajistán",
       "nameEN": "Kazakhstan",
       "iso2": "KZ",
       "iso3": "KAZ",
@@ -896,7 +896,7 @@
       "phoneCode": "254"
     },
     {
-      "nameES": "Kirguist&#xE1;n",
+      "nameES": "Kirguistán",
       "nameEN": "Kyrgyzstan",
       "iso2": "KG",
       "iso3": "KGZ",
@@ -917,7 +917,7 @@
       "phoneCode": "965"
     },
     {
-      "nameES": "L&#xED;bano",
+      "nameES": "Líbano",
       "nameEN": "Lebanon",
       "iso2": "LB",
       "iso3": "LBN",
@@ -980,14 +980,14 @@
       "phoneCode": "352"
     },
     {
-      "nameES": "M&#xE9;xico",
+      "nameES": "México",
       "nameEN": "Mexico",
       "iso2": "MX",
       "iso3": "MEX",
       "phoneCode": "52"
     },
     {
-      "nameES": "M&#xF3;naco",
+      "nameES": "Mónaco",
       "nameEN": "Monaco",
       "iso2": "MC",
       "iso3": "MCO",
@@ -1001,7 +1001,7 @@
       "phoneCode": "853"
     },
     {
-      "nameES": "Maced&#xF4;nia",
+      "nameES": "Macedônia",
       "nameEN": "Macedonia",
       "iso2": "MK",
       "iso3": "MKD",
@@ -1190,21 +1190,21 @@
       "phoneCode": "64"
     },
     {
-      "nameES": "Om&#xE1;n",
+      "nameES": "Omán",
       "nameEN": "Oman",
       "iso2": "OM",
       "iso3": "OMN",
       "phoneCode": "968"
     },
     {
-      "nameES": "Pa&#xED;ses Bajos",
+      "nameES": "Países Bajos",
       "nameEN": "Netherlands",
       "iso2": "NL",
       "iso3": "NLD",
       "phoneCode": "31"
     },
     {
-      "nameES": "Pakist&#xE1;n",
+      "nameES": "Pakistán",
       "nameEN": "Pakistan",
       "iso2": "PK",
       "iso3": "PAK",
@@ -1225,14 +1225,14 @@
       "phoneCode": "970"
     },
     {
-      "nameES": "Panam&#xE1;",
+      "nameES": "Panamá",
       "nameEN": "Panama",
       "iso2": "PA",
       "iso3": "PAN",
       "phoneCode": "507"
     },
     {
-      "nameES": "Pap&#xFA;a Nueva Guinea",
+      "nameES": "Papúa Nueva Guinea",
       "nameEN": "Papua New Guinea",
       "iso2": "PG",
       "iso3": "PNG",
@@ -1246,7 +1246,7 @@
       "phoneCode": "595"
     },
     {
-      "nameES": "Per&#xFA;",
+      "nameES": "Perú",
       "nameEN": "Peru",
       "iso2": "PE",
       "iso3": "PER",
@@ -1295,36 +1295,36 @@
       "phoneCode": "44"
     },
     {
-      "nameES": "Rep&#xFA;blica Centroafricana",
+      "nameES": "República Centroafricana",
       "nameEN": "Central African Republic",
       "iso2": "CF",
       "iso3": "CAF",
       "phoneCode": "236"
     },
     {
-      "nameES": "Rep&#xFA;blica Checa",
+      "nameES": "República Checa",
       "nameEN": "Czech Republic",
       "iso2": "CZ",
       "iso3": "CZE",
       "phoneCode": "420"
     },
     {
-      "nameES": "Rep&#xFA;blica Dominicana",
+      "nameES": "República Dominicana",
       "nameEN": "Dominican Republic",
       "iso2": "DO",
       "iso3": "DOM",
       "phoneCode": "1 809"
     },
     {
-      "nameES": "Rep&#xFA;blica de Sud&#xE1;n del Sur",
+      "nameES": "República de Sudán del Sur",
       "nameEN": "South Sudan",
       "iso2": "SS",
       "iso3": "SSD",
       "phoneCode": "211"
     },
     {
-      "nameES": "Reuni&#xF3;n",
-      "nameEN": "R&#xE9;union",
+      "nameES": "Reunión",
+      "nameEN": "Réunion",
       "iso2": "RE",
       "iso3": "REU",
       "phoneCode": "262"
@@ -1337,7 +1337,7 @@
       "phoneCode": "250"
     },
     {
-      "nameES": "Ruman&#xED;a",
+      "nameES": "Rumanía",
       "nameEN": "Romania",
       "iso2": "RO",
       "iso3": "ROU",
@@ -1372,14 +1372,14 @@
       "phoneCode": "1 684"
     },
     {
-      "nameES": "San Bartolom&#xE9;",
-      "nameEN": "Saint Barth&#xE9;lemy",
+      "nameES": "San Bartolomé",
+      "nameEN": "Saint Barthélemy",
       "iso2": "BL",
       "iso3": "BLM",
       "phoneCode": "590"
     },
     {
-      "nameES": "San Crist&#xF3;bal y Nieves",
+      "nameES": "San Cristóbal y Nieves",
       "nameEN": "Saint Kitts and Nevis",
       "iso2": "KN",
       "iso3": "KNA",
@@ -1393,14 +1393,14 @@
       "phoneCode": "378"
     },
     {
-      "nameES": "San Mart&#xED;n (Francia)",
+      "nameES": "San Martín (Francia)",
       "nameEN": "Saint Martin (French part)",
       "iso2": "MF",
       "iso3": "MAF",
       "phoneCode": "1 599"
     },
     {
-      "nameES": "San Pedro y Miquel&#xF3;n",
+      "nameES": "San Pedro y Miquelón",
       "nameEN": "Saint Pierre and Miquelon",
       "iso2": "PM",
       "iso3": "SPM",
@@ -1415,20 +1415,20 @@
     },
     {
       "nameES": "Santa Elena",
-      "nameEN": "Ascensi&#xF3;n y Trist&#xE1;n de Acu&#xF1;a",
+      "nameEN": "Ascensión y Tristán de Acuña",
       "iso2": "SH",
       "iso3": "SHN",
       "phoneCode": "290"
     },
     {
-      "nameES": "Santa Luc&#xED;a",
+      "nameES": "Santa Lucía",
       "nameEN": "Saint Lucia",
       "iso2": "LC",
       "iso3": "LCA",
       "phoneCode": "1 758"
     },
     {
-      "nameES": "Santo Tom&#xE9; y Pr&#xED;ncipe",
+      "nameES": "Santo Tomé y Príncipe",
       "nameEN": "Sao Tome and Principe",
       "iso2": "ST",
       "iso3": "STP",
@@ -1498,14 +1498,14 @@
       "phoneCode": "94"
     },
     {
-      "nameES": "Sud&#xE1;frica",
+      "nameES": "Sudáfrica",
       "nameEN": "South Africa",
       "iso2": "ZA",
       "iso3": "ZAF",
       "phoneCode": "27"
     },
     {
-      "nameES": "Sud&#xE1;n",
+      "nameES": "Sudán",
       "nameEN": "Sudan",
       "iso2": "SD",
       "iso3": "SDN",
@@ -1526,7 +1526,7 @@
       "phoneCode": "41"
     },
     {
-      "nameES": "Surin&#xE1;m",
+      "nameES": "Surinám",
       "nameEN": "Suriname",
       "iso2": "SR",
       "iso3": "SUR",
@@ -1547,7 +1547,7 @@
       "phoneCode": "268"
     },
     {
-      "nameES": "Tayikist&#xE1;n",
+      "nameES": "Tayikistán",
       "nameEN": "Tajikistan",
       "iso2": "TJ",
       "iso3": "TJK",
@@ -1561,7 +1561,7 @@
       "phoneCode": "66"
     },
     {
-      "nameES": "Taiw&#xE1;n",
+      "nameES": "Taiwán",
       "nameEN": "Taiwan",
       "iso2": "TW",
       "iso3": "TWN",
@@ -1575,14 +1575,14 @@
       "phoneCode": "255"
     },
     {
-      "nameES": "Territorio Brit&#xE1;nico del Oc&#xE9;ano &#xCD;ndico",
+      "nameES": "Territorio Británico del Océano Índico",
       "nameEN": "British Indian Ocean Territory",
       "iso2": "IO",
       "iso3": "IOT",
       "phoneCode": "246"
     },
     {
-      "nameES": "Territorios Australes y Ant&#xE1;rticas Franceses",
+      "nameES": "Territorios Australes y Antárticas Franceses",
       "nameEN": "French Southern Territories",
       "iso2": "TF",
       "iso3": "ATF",
@@ -1631,14 +1631,14 @@
       "phoneCode": "216"
     },
     {
-      "nameES": "Turkmenist&#xE1;n",
+      "nameES": "Turkmenistán",
       "nameEN": "Turkmenistan",
       "iso2": "TM",
       "iso3": "TKM",
       "phoneCode": "993"
     },
     {
-      "nameES": "Turqu&#xED;a",
+      "nameES": "Turquía",
       "nameEN": "Turkey",
       "iso2": "TR",
       "iso3": "TUR",
@@ -1673,7 +1673,7 @@
       "phoneCode": "598"
     },
     {
-      "nameES": "Uzbekist&#xE1;n",
+      "nameES": "Uzbekistán",
       "nameEN": "Uzbekistan",
       "iso2": "UZ",
       "iso3": "UZB",
