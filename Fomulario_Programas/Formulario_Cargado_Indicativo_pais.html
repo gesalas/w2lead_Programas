@@ -22,11 +22,22 @@
     
     
         /*Quitar controles a numeros Importante */
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
+        input[type=number]::-webkit-inner-combobox,
+        input[type=number]::-webkit-outer-combobox {
             -webkit-appearance: none;
             margin: 0;
+        } 
+        /* Ocultar los controles de incremento y decremento cuando el campo está enfocado */
+        input[type=number]:focus::-webkit-inner-spin-button,
+        input[type=number]:focus::-webkit-outer-spin-button {
+            display: none;
         }
+
+        /* Ocultar los controles de incremento y decremento cuando el mouse está encima */
+        input[type=number]:hover::-webkit-inner-spin-button,
+        input[type=number]:hover::-webkit-outer-spin-button {
+            display: none;
+}       
     
         .p-md-5 {
         padding: 1.5rem !important;
@@ -34,7 +45,7 @@
     
     .form-group {
         margin-bottom: 0.6rem;
-    }
+    }       
     
     .block-video .video-item img {
         display: block;
@@ -69,6 +80,8 @@
         max-width: 400px;
         margin-left: 50px;
     }
+
+    
     </style>
     
      <div class="main_form" id="main_form">
@@ -102,11 +115,7 @@
                             <option value="CC">Cédula Ciudadanía</option>
                             <option value="CE">Cédula Extranjería</option>
                             <option value="PA">Pasaporte</option>
-                            <option value="TI">Tarjeta Identidad</option>
-                            <option value="CP">Carné Diplomático</option>
-                            <option value="CI">Cedula de Identidad</option>
-                            <option value="PTP">Permiso Temporal Protección</option>
-        
+                            <option value="TI">Tarjeta Identidad</option>        
                         </select>
                     </div>
         
@@ -118,24 +127,31 @@
                 </div>
                 <!--Email y celular-->
                 <div class="form-row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-12">
                         <input placeholder="*Email" id="email"
                             class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="80" name="email"
                             type="email" onkeyup="this.value=limpiarJson(this.value)" required="">
-                    </div>                
-                    
-                    <!--prefijo-->   
-                    <div class="input-group col-6">                        
-                        <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 col-2" required style="font-size: small; padding:0px 5px;">
-                        <option value="">Selecciona</option>
-                        </select>                       
-                        <input placeholder="*Teléfono celular" id="mobile" min="9999999"
-                            class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="40"
-                            name="mobile" onkeyup="this.value=limpiarNumeros(this.value)" type="number" required="" oninvalid="this.setCustomValidity('El número de celular debe tener al menos 8 dígitos')" 
-                            oninput="setCustomValidity('')">                        
+                    </div> 
+                </div> 
+
+                <!--prefijo-->  
+                <div class="form-row">
+                    <div class="form-group col-12">                         
+                        <div class="input-group">
+                            <div class="select-wrapper" style="width:30%;">                        
+                                <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="prefijoSelect form-control border-top-0 border-left-0 border-right-0 rounded-0" required style="font-size: small; padding:0px 5px;">
+                                <option value="">(+) Indicativo </option>
+                                </select> 
+                                <div class="select-arrow"></div>
+                            </div>                                      
+                                <input placeholder="*Teléfono celular" id="mobile" 
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-0" min="9999999" maxlength="10"
+                                name="mobile" onkeyup="this.value=limpiarNumeros(this.value)" type="number" required oninvalid="this.setCustomValidity('El número de celular debe tener al menos 8 dígitos')" 
+                                oninput="setCustomValidity('')">                                                
+                        </div>
                     </div>
                 </div>
-        
+
                 <!--Lugar de residencia-->
         
                 <div class="form-row">
@@ -271,7 +287,7 @@
             })
         
             $('#email').change(()=>{ 
-                let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                let emailRegex =  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;; 
                 const emailInput = document.getElementById('email');
                 if(!emailRegex.test($('#email').val())){
                         emailInput.setCustomValidity('Ingresa una dirección de correo electrónico válida');
@@ -475,9 +491,10 @@
         
                 // Actualizar los campos del formulario con los valores UTM
                 document.getElementById('00N7j000002BKgW').value    = utmSource;
+                document.getElementById('00N7j000002BKgb').value    = utmSubsource;
                 document.getElementById('00NO40000001izt').value    = utmMedium;
                 document.getElementById('00N7j000002BfkF').value    = utmCampaign;
-                document.getElementById('00N7j000002BKgb').value    = utmSubsource;
+                
             }
         
             // Llamar a la función al cargar la página
@@ -485,44 +502,42 @@
 
             //Variable seleccionar indicativo
             const selectIndicativo = document.getElementById('00NO4000002lUPh');
+            let prefijoSeleccionado = document.getElementById("prefijoSeleccionado");
 
             //Seleccionar codigo de pais
             function codigoDePais(){                
+                //fetch('/JSON/codigos_pais.json')
                 fetch('/recursosdb/1372208/10609114/codigos_pais.json/4733fa76-c07d-e51e-dcc0-0271cc2cdc2e?t=1713212607975')
                 .then(response => response.json())
                 .then(data => {                                
                     data.forEach(pais => {                                                
                         const option = document.createElement('option');                        
                         option.value = pais.phoneCode;
-                        option.text = (pais.phoneCode + " ... " + pais.nameES);
+                        option.text = ("+" + pais.phoneCode + " ... " + pais.nameES);
 
                         //Fondo:
                         if (pais.nameES === 'Colombia') {
                             option.style.backgroundColor = 'aliceBlue';
                             option.style.color = '#000000';
+                            option.style.fontWeight = "900";
                         }
                         selectIndicativo.appendChild(option);                                                                                                                 
                     });                
                     
                 })
-                .catch(error => console.error('Error al cargar los países:', error));
-                console.log("Cualquier cosa");
-            };
-            console.log(selectIndicativo.value)
-            //codigoDePais();
-
+                .catch(error => console.error('Error al cargar los países:', error));                
+            };                      
             codigoDePais();
 
+            //Captura del codigo SAE
             var codigoSae = document.getElementById("00N7j000002BI3p");
             codigoSae.value = codPrograma;
-
-
-            /*selectIndicativo.addEventListener('change', () => {
-                if(selectIndicativo.value === "1"){
-                    selectIndicativo.textContent = selectIndicativo.value;
-                };
-            });*/
             
+            //boton atras
+            window.onbeforeunload = function(e) {
+                console.log("hola");
+            };
+
         </script>
     
 </body>
