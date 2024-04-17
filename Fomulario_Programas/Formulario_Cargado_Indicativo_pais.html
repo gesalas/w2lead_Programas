@@ -272,6 +272,7 @@
         </div>
         
         <script>
+
             $('input[name=form_radio]').change(()=>{           
                 let value = $( 'input[name=form_radio]:checked' ).val();
                 console.log(value)
@@ -377,7 +378,7 @@
                         const departamentoSelect = document.getElementById('00N7j000002BY1h');
                         const ciudadSelect = document.getElementById('00N7j000002BY1i');
                         const departamentoContainer = document.getElementById('departamentoContainer');
-                        const ciudadContainer = document.getElementById('ciudadContainer');
+                        const ciudadContainer = document.getElementById('ciudadContainer');                        
         
                         // Cargar opciones de país
                         for (const pais in data) {
@@ -386,9 +387,9 @@
                             option.textContent = data[pais].nombre;
                             paisSelect.appendChild(option);
                         }
-        
+                            
                         // Manejar cambio de selección de país
-                        paisSelect.addEventListener('change', () => {
+                        paisSelect.addEventListener('change', () => {                            
                             const paisSeleccionado = paisSelect.value;
                             const departamentoData = data[paisSeleccionado]?.departamentos;
         
@@ -450,7 +451,7 @@
                                 departamentoSelect.innerHTML = '';
                                 ciudadSelect.innerHTML = '';
                             }
-                        });
+                        });                        
         
                         // Manejar cambio de selección de departamento
                         departamentoSelect.addEventListener('change', () => {
@@ -472,16 +473,13 @@
                                     ciudadSelect.appendChild(option);
                                 }
                             }
-                        });
+                        });                       
                     })
                     .catch(error => console.error('Error al cargar el archivo JSON:', error));
             }
         
             // Llamar a la función al cargar la página
             cargarOpciones();            
-
-                // Resetear todos los campos del formulario al cargar la página
-                document.getElementById("main_form").reset();
             
         </script>
         
@@ -540,18 +538,6 @@
             var codigoSae = document.getElementById("00N7j000002BI3p");
             codigoSae.value = codPrograma;
             
-            //boton atras
-            window.onbeforeunload = function(e) {
-                console.log("hola");
-            };
-
-            //limpiar cache
-            window.onload = function() {
-                // Limpiar el caché al cargar la página
-                window.location.reload(true);
-            };
-            
-
         </script>
     
 </body>
