@@ -402,15 +402,16 @@
                             }else{
                                 $("#00N7j000002BY1h").prop('required',false);
                                 $("#00N7j000002BY1i").prop('required',false);
+                                departamentoContainer.style.display = 'none';
+                                ciudadContainer.style.display = 'none';
+                                departamentoSelect.innerHTML = '';
+                                ciudadSelect.innerHTML = '';
                             }
         
                             if (departamentoData) {
                                 departamentoContainer.style.display = 'block';
                                 ciudadContainer.style.display = 'block';
-                                departamentoContainer.style.display = 'none';
-                                ciudadContainer.style.display = 'none';
-                                departamentoSelect.innerHTML = '';
-                                ciudadSelect.innerHTML = '';
+                                
         
                                 // Cargar opciones de departamento
                                 departamentoSelect.innerHTML = '';
