@@ -130,7 +130,7 @@
                     <div class="form-group col-12">
                         <input placeholder="*Email" id="email"
                             class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="80" name="email"
-                            type="email" onkeyup="this.value=limpiarJson(this.value)" required="">
+                            type="email"  required="">
                     </div> 
                 </div> 
 
@@ -139,7 +139,7 @@
                     <div class="form-group col-12">                         
                         <div class="input-group">
                             <div class="select-wrapper" style="width:30%;">                        
-                                <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="prefijoSelect form-control border-top-0 border-left-0 border-right-0 rounded-0" required style="font-size: small; padding:0px 5px;">
+                                <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="prefijoSelect form-control border-top-0 border-left-0 border-right-0 rounded-0" required style="font-size: small; padding:0px 25px 0px 5px;">
                                 <option value="">(+) Indicativo </option>
                                 </select> 
                                 <div class="select-arrow"></div>
@@ -395,16 +395,22 @@
                             // valida si es colombia deja requeridos los campos departamento y ciudad
         
                             if(paisSeleccionado=='COL'){
-                                $("#00N7j000002BY1h").prop('required',true)
-                                $("#00N7j000002BY1i").prop('required',true)
+                                $("#00N7j000002BY1h").prop('required',true);
+                                $("#00N7j000002BY1i").prop('required',true);
+                                departamentoContainer.style.display= "block";
+                                departamentoSelect.style.display = "block";
                             }else{
-                                $("#00N7j000002BY1h").prop('required',false)
-                                $("#00N7j000002BY1i").prop('required',false)
+                                $("#00N7j000002BY1h").prop('required',false);
+                                $("#00N7j000002BY1i").prop('required',false);
                             }
         
                             if (departamentoData) {
                                 departamentoContainer.style.display = 'block';
                                 ciudadContainer.style.display = 'block';
+                                departamentoContainer.style.display = 'none';
+                                ciudadContainer.style.display = 'none';
+                                departamentoSelect.innerHTML = '';
+                                ciudadSelect.innerHTML = '';
         
                                 // Cargar opciones de departamento
                                 departamentoSelect.innerHTML = '';
