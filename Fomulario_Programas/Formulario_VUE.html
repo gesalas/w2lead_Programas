@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <style>
+            
+    
+        /*Quitar controles a numeros Importante */
+        input[type=number]::-webkit-inner-combobox,
+        input[type=number]::-webkit-outer-combobox {
+            -webkit-appearance: none;
+            margin: 0;
+        } 
+        /* Ocultar los controles de incremento y decremento cuando el campo está enfocado */
+        input[type=number]:focus::-webkit-inner-spin-button,
+        input[type=number]:focus::-webkit-outer-spin-button {
+            display: none;
+        }
+
+        /* Ocultar los controles de incremento y decremento cuando el mouse está encima */
+        input[type=number]:hover::-webkit-inner-spin-button,
+        input[type=number]:hover::-webkit-outer-spin-button {
+            display: none;
+}       
+    
+        .p-md-5 {
+        padding: 1.5rem !important;
+    }
+    
+    .form-group {
+        margin-bottom: 0.6rem;
+    }           
+    
+    .form-control {
+        background-clip: border-box;
+        border-color: #ced4da;
+        border-bottom-width: 0.0625rem;
+        border-left-width: 0.0625rem;
+        border-right-width: 0.0625rem;
+        border-top-width: 0.0625rem;
+        height: 2.2rem;
+        min-width: 0;
+    }  
+
+    .error_text {
+        color: red;
+        font-size: smaller;
+    }
+
+    .formulario_programa{
+        padding: 20px;
+    }
+
+    </style>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <div id="app">    
+        <div class="formulario_programa">
+                <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"  id="form_SF" ref='form_SF' v-on:submit.prevent="validateForm" method="post" class="d-flex flex-column justify-content-around px-4 py-5 p-md-5" novalidate aria-label="Formulario de contacto" class="needs-validation">
+                    <input type="hidden" name="oid" value="00D7j0000004eQD">
+                    <input type="hidden" name="retURL" id="retURL" v-model="data.urlPrograma">
+                    <input type="hidden" name="debug" value="1">
+                    <input type="hidden" name="debugEmail" value="gesalas@javeriana.edu.co">    
+            
+                    <!--Nombres y apellidos-->
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <input placeholder="*Nombre(s)" id="first_name" v-model="data.first_name"
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="40" v-on:change="deleteInvalid('first_name')"
+                                name="first_name"  type="text" :class="{ error: errors.first_name }" required="">
+                            <div class="error_text" v-show="errors.first_name">
+                                Completa este campo
+                            </div>
+                        </div>
+            
+                        <div class="form-group col-6">
+                            <input placeholder="*Apellidos" id="last_name" v-model="data.last_name" v-on:change="deleteInvalid('last_name')"
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-1 needs-validation"
+                                maxlength="80" name="last_name" type="text" required=""
+                                :class="{ error: errors.last_name }">
+                            <div class="error_text" v-show="errors.last_name">
+                                Completa este campo
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!--Documentos de identidad-->
+                    <div class="form-row">
+                        <div class="form-group col-5">
+                            <select id="00N7j000002BI3X" v-model="data.tipo_doc" v-on:change="deleteInvalid('tipo_doc')" name="00N7j000002BI3X"
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-1" required=""
+                                :class="{ error: errors.tipo_doc }">
+                                <option value="">*Tipo de documento</option>
+                                <option value="CC">Cédula Ciudadanía</option>
+                                <option value="CE">Cédula Extranjería</option>
+                                <option value="PA">Pasaporte</option>
+                                <option value="TI">Tarjeta Identidad</option>
+                                <!-- Agregar opciones aquí -->
+                            </select>
+                            <div class="error_text" v-show="errors.tipo_doc">
+                                Selecciona
+                            </div>
+                        </div>
+    
+                        <div class="form-group col-7">
+                            <input placeholder="*Número de documento" v-on:change="deleteInvalid('numero_doc')"  v-model="data.numero_doc" id="00N7j000002BI3V"
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-1" maxlength="255"
+                                name="00N7j000002BI3V" type="text" required :class="{ error: errors.numero_doc }">
+                            <div class="error_text" v-show="errors.numero_doc">
+                                Completa este campo
+                            </div>
+                        </div>
+                    </div>
+                    <!--Email y celular-->
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <input placeholder="*Email" id="email" v-model="data.email" 
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-1" maxlength="80"
+                                name="email" type="email" required :class="{ error: errors.email }">
+                            <div class="error_text" v-show="errors.email">
+                                Ingresa un correo válido
+                            </div>
+                        </div> 
+                    </div> 
+
+                    <!--prefijo y celular-->  
+                    <div class="form-row">
+                        <div class="form-group col-3">
+                            <div class="select-wrapper" style="width:100%;">                        
+                                <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="prefijoSelect form-control border-top-0 border-left-0 border-right-0 rounded-1" v-model="data.prefijoCel" v-on:change="deleteInvalid('prefijoCel')" required style="font-size: medium; padding:0px 25px 0px 5px;">
+                                    <option value="">(+) Indicativo</option>
+                                    <option v-for="pais in prefijoCel" :value="pais.phoneCode" v-bind:style="{ backgroundColor: pais.phoneName === 'Colombia' ? 'aliceBlue' : '', color: pais.phoneName === 'Colombia' ? '#000000' : '', fontWeight: pais.phoneName === 'Colombia' ? '900' : '' }">
+                                        {{ pais.phoneName }} (+{{ pais.phoneCode }})
+                                    </option>
+                                </select>
+                                <div class="error_text" v-show="errors.prefijoCel">
+                                    Seleccionar
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="form-group col-9">
+                            <input placeholder="*Teléfono celular" id="mobile" v-model="data.mobile" v-on:change="deleteInvalid('mobile')"                            
+                            class="form-control col-12 border-top-0 border-left-0 border-right-0 rounded-1" name="mobile"
+                            type="text" minlength="8" maxlength="15" required :class="{ error: errors.mobile }">
+                            <div class="error_text" v-show="errors.mobile">
+                                Completa este campo (entre 8 y 10 caracteres)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Lugar de residencia-->            
+                    <div class="form-row">
+                        <!-- Pais -->
+                        <div class="form-group col-12">
+                            <select v-model="data.pais" v-on:change="deleteInvalid('pais')"
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-1"
+                                id="00N7j000002BY1c" name="00N7j000002BY1c" required :class="{ error: errors.pais }">
+                                <option value="">*Pais de residencia</option>
+                                <option v-for="(item, index) in ubicaciones" v-bind:value="index"
+                                    v-bind:style="(index=='COL') ? 'font-weight: 700;' : '' ">{{ item.nombre }}</option>
+                            </select>
+                            <div class="error_text" v-show="errors.pais">
+                                Selecciona
+                            </div>
+                        </div>
+    
+                        <!-- Departamento -->
+                        <div class="form-group col-md-6 col-sm-12" id="departamentoContainer" v-if="data.pais=='COL'">
+                            <select v-model="data.departamento" v-on:change="deleteInvalid('departamento')"
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-1"
+                                id="00N7j000002BY1h" name="00N7j000002BY1h" 
+                                :class="{ error: errors.departamento }">
+                                <option value="">*Selecciona el departamento</option>
+                                <option v-for="(item, index) in ubicaciones[data.pais].departamentos"
+                                    v-bind:value="item.codigo">{{ item.nombre }}</option>
+                            </select>
+                            <div class="error_text" v-show="errors.departamento">
+                                Selecciona
+                            </div>
+                        </div>
+    
+                        <!-- Ciudad -->
+                        <div class="form-group col-md-6 col-sm-12" id="ciudadContainer"
+                            v-if="data.pais=='COL' && data.departamento!=''">
+                            <select v-model="data.ciudad" v-on:change="deleteInvalid('ciudad')"
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-1"
+                                id="00N7j000002BY1i" name="00N7j000002BY1i" v-bind:required="data.pais=='COL'"
+                                :class="{ error: errors.ciudad }">
+                                <option value="">*Selecciona la Ciudad</option>
+                                <option v-for="(item, index) in getCiudades(data.departamento)" v-bind:value="item.codigo">
+                                    {{ item.nombre }}</option>
+                            </select>
+                            <div class="error_text" v-show="errors.ciudad">
+                                Selecciona
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Periodo de Ingreso-->
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <select class="form-control validates-as-required border-top-0 border-left-0 border-right-0 rounded-1" id="00N7j000002BY2L"
+                            v-model="data.periodo_esperado" v-on:change="deleteInvalid('periodo_esperado')" :class="{ error: errors.periodo_esperado }" maxlength="20" name="00N7j000002BY2L" required="">
+                                <option value="">*Periodo de Ingreso</option>                        
+                                <option value="PREG2430">Segundo semestre de 2024</option>
+                                <option value="PREG2510">Primer semestre de 2025</option>
+                                <option value="PREG2530">Segundo semestre de 2025</option>
+                            </select>
+                            <div class="error_text" v-show="errors.periodo_esperado">
+                                Selecciona
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Programa-->
+                    <div class="form-row col-12" style="display: none;">
+                        <div class="col-12">
+                            <span class="wpcf7-form-control-wrap">
+                                <input id="00N7j000002BI3p" v-model="data.programa"
+                                    class="form-control  validates-as-required rounded-1 text-dark mb-3"
+                                    name="00N7j000002BI3p" :class="{ error: errors.programa }">
+                                <div class="error_text" v-show="errors.programa">
+                                    Selecciona
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--origen IMPORTANTE debe estar oculto-->
+                    <div style="display: none;">
+                        <div class="form-row">
+                            Origen de la Solicitud:<select id="00NO40000002ZeP" name="00NO40000002ZeP"
+                                v-model="data.origen_sol" title="Origen de la Solicitud">
+                                <option selected value="Web to Lead">Web to Lead</option>
+                            </select>
+    
+                            Fuente autorización datos personales:<select id="00N7j000002BY26" name="00N7j000002BY26"
+                                v-model="data.fuenteAutoriza" title="Fuente autorización datos personales">
+                                <option value="Landing Programas">Landing Programas</option>
+                            </select>
+                            <label for="lead_source">Origen del candidato</label>
+                            <select id="lead_source" v-model="data.lead" name="lead_source">
+                                <option value="Landing Pages">Landing Pages</option>
+                            </select>
+                            <label for="company">Compañía</label><input id="company" v-model="data.company" maxlength="40"
+                                name="company" size="20" type="text" value="NA" />
+                        </div>
+    
+                        <!--UTMS-->
+                        <div class="form-row">
+                            Fuente:<input id="00N7j000002BKgW" v-model="data.fuente" name="00N7j000002BKgW" title="Fuente"
+                                type="text" />
+                            Subfuente:<input id="00N7j000002BKgb" v-model="data.subfuente" name="00N7j000002BKgb"
+                                title="Subfuente" type="text" />
+                            Medio <input id="00NO40000001izt" v-model="data.medio" name="00NO40000001izt" title="Medio"
+                                type="text" />
+                            Campaña:<input id="00N7j000002BfkF" v-model="data.campana" maxlength="255"
+                                name="00N7j000002BfkF" type="text" />
+                        </div>
+                    </div>         
+                    
+                    <!--Legales y botón de inscripción-->
+                    <div class="form-row col-12 mb-3">
+                        <div class="col-12">
+                            <span class="d-block text-azul">¿Autoriza usted el tratamiento de sus datos personales de
+                                acuerdo con la <a
+                                    href="https://javeriana.ingresouniversitario.com/wp-content/uploads/2023/09/autorizacion-de-privacidad.pdf"
+                                    class=" text-azul fw-medium text-decoration-underline" target="_blank"
+                                    download="">autorización de privacidad</a>?</span>
+                            <div class="form-check form-check-inline">
+                                <input v-on:change="validateAutoriza()" class="form-check-input" type="radio"
+                                    v-model="data.autoriza" id="00N7j000002BI3m" name="00N7j000002BI3m" value="1">
+                                <label class="form-check-label text-azul" for="00N7j000002BI3m">Sí</label><br>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input v-on:change="validateAutoriza()" class="form-check-input" type="radio"
+                                    v-model="data.autoriza" name="00N7j000002BI3m" id="00N7j000002BI3m" value="0">
+                                <label class="form-check-label text-azul" for="autorizacion-2">No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="autorizacionErrorMessage" v-show="errors.autoriza">
+                            <p style="color: brown; font-size:0.8rem;">La Pontificia Universidad Javeriana requiere de su
+                                autorización para el tratamiento de sus datos personales para continuar con el presente
+                                proceso, sin la autorización legalmente no podemos darle continuidad al mismo</p>
+                        </div>
+                    </div>
+                        <!--Botón-->
+                        <div class="form-row col-12 mb-3">
+                            <div class="col-12">
+                                <button class="btn btn-warning w-50 py-2 text-azul fw-bold shadow my-2 border-0 mx-auto d-block" type="submit"
+                                    v-bind:disabled="formInValid" style="background-color: #F6BD30; font-size: 1rem; white-space: unset; border-radius:8rem; color:#ffffff; font-weight:700;">Enviar</button>
+                            </div>
+                        </div>                   
+                </form>
+        </div>
+    </div>
+
+    <script>
+    //Captura del codigo SAE
+    let codPrograma = "DSIND";
+
+    const { createApp } = Vue
+
+    const app = createApp({
+        data() {
+            return {
+                programas: [],
+                prefijoCel: [],
+                // periodos: [],
+                ubicaciones: [],
+                //periodoSel:[],
+                formInValid: true,
+                data: {
+                    urlPrograma: "",
+                    first_name: "",
+                    last_name: "",
+                    tipo_doc: "",
+                    numero_doc: "",
+                    email: "",
+                    prefijoCel: "",
+                    mobile: "",
+                    pais: "",
+                    departamento: "",
+                    ciudad: "",
+                    programa: codPrograma,
+                    periodo_esperado: "",
+                    origen_sol: "Web to Lead",
+                    fuenteAutoriza: "Landing Programas",
+                    lead: "Landing Pages",
+                    company: "NA",
+                    fuente: "",
+                    subfuente: "",
+                    medio: "",
+                    campana: "",
+                    autoriza: ""
+                },
+                errors: {
+                    urlPrograma: false,
+                    first_name: false,
+                    last_name: false,
+                    tipo_doc: false,
+                    numero_doc: false,
+                    email: false,
+                    prefijoCel: false,
+                    mobile: false,
+                    pais: false,
+                    departamento: false,
+                    ciudad: false,
+                    programa: false,
+                    periodo_esperado: false,
+                    origen_sol: false,
+                    fuenteAutoriza: false,
+                    lead: false,
+                    company: false,
+                    fuente: false,
+                    subfuente: false,
+                    medio: false,
+                    campana: false,
+                    autoriza: false
+                }
+            }
+        },
+        watch: {
+            'data.first_name':
+            function (newText, oldText) {
+                this.data.first_name = this.limpiarTexto(newText);
+            },
+            'data.last_name':
+            function (newText, oldText) {
+                this.data.last_name = this.limpiarTexto(newText);
+            },
+            'data.mobile': function (newMobile, oldMobile) {
+                this.data.mobile = this.limpiarNumeros(newMobile);
+            },
+            'data.email': function (newEmail, oldEmail) {
+                const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;                    
+                    if (regex.test(newEmail)===false) {
+                    this.errors.email = true
+                    }else{
+                    this.errors.email = false
+                    }
+            }
+        },
+        mounted() {
+            // Recien carga el sitio se cargan los datos
+            this.limpiarDatos()
+            this.getUbicaciones()
+            this.getProgramas(codPrograma)
+            this.getParametersGet()
+            this.getPrefijoCel()
+            
+        },
+        methods: {
+            /**
+                * Funcion para limpiar la variable de los datos
+                **/ 
+            limpiarDatos(){
+                this.data = {
+                    urlPrograma: "",
+                    first_name: "",
+                    last_name: "",
+                    tipo_doc: "",
+                    numero_doc: "",
+                    email: "",
+                    mobile: "",
+                    prefijoCel: "",
+                    pais: "",
+                    departamento: "",
+                    ciudad: "",
+                    programa: codPrograma,
+                    periodo_esperado: "",
+                    origen_sol: "Web to Lead",
+                    fuenteAutoriza: "Landing Programas",
+                    lead: "Landing Pages",
+                    company: "NA",
+                    fuente: "",
+                    subfuente: "",
+                    medio: "",
+                    campana: "",
+                    autoriza: ""
+                }
+            },
+            /**
+                * Funcion para obtener los valores de los parametros que vienen por GET
+                **/  
+            getParametersGet(){
+                let urlParams = new URLSearchParams(window.location.search);
+                this.data.fuente  = (urlParams.has('utm_source'))?urlParams.get('utm_source'):"";
+                this.data.subfuente= (urlParams.has('utm_subsource'))?urlParams.get('utm_subsource'):""; 
+                this.data.medio = (urlParams.has('utm_medium'))?urlParams.get('utm_medium'):""; 
+                this.data.campana = (urlParams.has('utm_campaign'))?urlParams.get('utm_campaign'):"";  
+            },
+            /**
+                * Funcion para cargar los programas
+                **/
+            getProgramas(codPrograma) {
+                return axios.get('https://raw.githubusercontent.com/gesalas/feria/main/programas.json')
+                    .then((response) => {
+                        const data = response.data;
+                        for (let facultadKey in data) {
+                            const facultad = data[facultadKey];
+                            for (let programaKey in facultad) {
+                                const programas = facultad[programaKey].Programas;
+                                for (let i = 0; i < programas.length; i++) {
+                                    if (programas[i].Codigo === codPrograma) {
+                                        this.data.urlPrograma = facultad[programaKey].url; // Asignar valor a urlPrograma
+                                        return; // Salir del método después de asignar el valor
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error al obtener los programas:", error);
+                    });
+            },
+                //
+            /**
+                * Funcion para cargar los periodos
+                **/
+            /*getPeriodos() {
+                axios.get('https://raw.githubusercontent.com/gesalas/feria/main/periodos.json')
+                    .then((response) => {
+                        this.periodos = response.data
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },*/
+            /**
+                * Funcion para cargar las ubicaciones
+                **/
+            getUbicaciones() {
+                axios.get('https://raw.githubusercontent.com/gesalas/feria/main/ubicaciones.json')
+                    .then((response) => {
+                        this.ubicaciones = response.data
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+
+            /**
+                * Funcion para cargar los celulares
+                **/
+            getPrefijoCel() {
+                axios.get('https://raw.githubusercontent.com/gesalas/Piloto_registro_de_llamadas/main/Json/codigos_pais.json')
+                    .then((response) => {
+                        // Filtrar los datos para obtener solo los códigos de país y sus prefijos
+                        this.prefijoCel = response.data.map((pais) => {
+                            return {
+                                iso2: pais.iso2,
+                                phoneCode: pais.phoneCode,
+                                phoneName: pais.nameES
+                            };
+                        });
+                    })
+            },
+                
+            /**
+                * Funcion para obtener las ciudades del departamento seleccionado
+                **/
+            getCiudades(departamento) {
+                let departamentoSel = this.ubicaciones['COL'].departamentos.filter(res => {
+                    return res.codigo == departamento
+                })
+                return departamentoSel[0].ciudades
+            },
+            /**
+                * Funcion para validar si esta el campo de aceptar terminos
+                **/ 
+            validateAutoriza() {
+                if (this.data.autoriza == "1") {
+                    this.errors.autoriza = false;
+                    this.formInValid = false
+                } else if (this.data.autoriza == "0") {
+                    this.errors.autoriza = true;
+                    this.formInValid = true
+                }
+            },
+            /**
+                * Funcion para limpiar textos
+                **/
+            limpiarTexto(texto) {
+                let textolimpio = texto.replace(/[^a-zA-Záéíóúñ ]/g, "");
+                return textolimpio;
+            },
+            /**
+                * Funcion para limpiar numeros
+                **/
+            limpiarNumeros(numero) {
+                let textolimpio = numero.replace(/[^0-9 ]/g, "");
+                return textolimpio;
+            },
+            /**
+                * Funcion para limpiar json
+                **/
+            limpiarJson(texto) {
+                return texto.replaceAll("|", "")
+                    .replace(/(\r\n|\n|\r)/gm, "")
+                    .replace(/['"]+/g, "'")
+                    .trim()
+            },
+            /**
+                * Funcion para limpiar alfanumericos
+                **/
+            limpiarAlfanumerico(text) {
+                let textolimpio = text.replace(/[^a-zA-Z0-9- ]/g, "");
+                return textolimpio;
+            },
+            /**
+                * Funcion para validar que los campos tengan datos
+                **/
+            validateInputs() {
+                let valid = true;
+                let keys = Object.keys(this.data)   
+                keys.forEach(element => {
+                    this.errors[element] = false
+                    switch (element) {
+                        case "first_name":
+                        case "last_name":
+                        case "tipo_doc":
+                        case "numero_doc":
+                        case "urlPrograma":
+                        case "pais":
+                        case "periodo_esperado":
+                        case "prefijoCel":                        
+                        case "programa":
+                            if (this.data[element] == "" || this.data[element] == null) {
+                                valid = false;
+                                this.errors[element] = true
+                            } 
+                        break;
+                        case "departamento":
+                        case "ciudad":
+                            if ((this.data[element] == "" || this.data[element] == null) && this.data.pais=="COL"){
+                                valid = false;
+                                this.errors[element] = true
+                            }
+                        break;  
+                        case "email":
+                            const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;      
+                            if (this.data[element] == "" || this.data[element] == null) {
+                                valid = false;
+                                this.errors[element] = true
+                            } else if (regex.test(this.data[element])===false) {
+                                valid = false;
+                                this.errors[element] = true
+                            }
+                            break;
+                        case "mobile":
+                            if (this.data[element] == "" || this.data[element] == null || this.data[element].length < 8 || this.data[element].length > 10) {
+                                valid = false;
+                                this.errors[element] = true
+                            } 
+                        break;
+                        default:
+                        break;
+                    }
+                });
+                return valid;
+            },
+            /**
+                * Funcion para enviar el formulario
+                **/
+            validateForm: function (e) {
+                if (!this.validateInputs()) {
+                    e.preventDefault();
+                    return false;
+                }else{
+                    this.$refs.form_SF.submit()
+                }
+                
+            },
+            /**
+                * Funcion para limpiar en caso que sea invalido
+                **/
+            deleteInvalid(campo){                    
+                this.errors[campo] = false
+            }
+        }
+    })
+
+    app.mount('#app')
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+
+</html>
+

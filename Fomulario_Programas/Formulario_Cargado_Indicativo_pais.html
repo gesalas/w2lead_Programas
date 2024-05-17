@@ -89,7 +89,7 @@
                 <input type="hidden" name="oid" value="00D7j0000004eQD">
                 <input type="hidden" name="retURL" id="retURL" value="">
                 <input type="hidden" name="debug" value="1">
-                <input type="hidden" name="debugEmail" value="gesalas@javeriana.edu.co">    
+                <input type="hidden" name="debugEmail" value="catalina.vallejo@javeriana.edu.co">    
         
                 <!--Nombres y apellidos-->
                 <div class="form-row">
@@ -514,10 +514,10 @@ Origen de la Solicitud:<select  id="00NO40000002ZeP" name="00NO40000002ZeP" titl
             const selectIndicativo = document.getElementById('00NO4000002lUPh');
             let prefijoSeleccionado = document.getElementById("prefijoSeleccionado");
 
-            //Seleccionar codigo telefonico de pais
+            //Seleccionar codigo de pais
             function codigoDePais(){                
-                fetch('/JSON/codigos_pais.json')
-                //fetch('/recursosdb/1372208/10609114/codigos_pais.json/4733fa76-c07d-e51e-dcc0-0271cc2cdc2e?t=1713212607975')
+                
+                fetch('/recursosdb/1372208/10609114/codigos_pais.json/4733fa76-c07d-e51e-dcc0-0271cc2cdc2e?t=1713212607975')
                 .then(response => response.json())
                 .then(data => {                                
                     data.forEach(pais => {                                                
