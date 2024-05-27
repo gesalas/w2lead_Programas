@@ -59,7 +59,7 @@
 
     </style>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <div id="app">    
         <div class="formulario_programa">
@@ -76,7 +76,7 @@
                                 class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="40" v-on:change="deleteInvalid('first_name')"
                                 name="first_name"  type="text" :class="{ error: errors.first_name }" required="">
                             <div class="error_text" v-show="errors.first_name">
-                                *Campo obligatorio
+                                Completa este campo
                             </div>
                         </div>
             
@@ -86,7 +86,7 @@
                                 maxlength="80" name="last_name" type="text" required=""
                                 :class="{ error: errors.last_name }">
                             <div class="error_text" v-show="errors.last_name">
-                                *Campo obligatorio
+                                Completa este campo
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                 <!-- Agregar opciones aquí -->
                             </select>
                             <div class="error_text" v-show="errors.tipo_doc">
-                                *Campo obligatorio
+                                Selecciona
                             </div>
                         </div>
     
@@ -114,7 +114,7 @@
                                 class="form-control border-top-0 border-left-0 border-right-0 rounded-1" maxlength="255"
                                 name="00N7j000002BI3V" type="text" required :class="{ error: errors.numero_doc }">
                             <div class="error_text" v-show="errors.numero_doc">
-                                *Campo obligatorio
+                                Completa este campo
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                                 class="form-control border-top-0 border-left-0 border-right-0 rounded-1" maxlength="80"
                                 name="email" type="email" required :class="{ error: errors.email }">
                             <div class="error_text" v-show="errors.email">
-                                Ingrese un correo válido
+                                Ingresa un correo válido
                             </div>
                         </div> 
                     </div> 
@@ -141,7 +141,7 @@
                                     </option>
                                 </select>
                                 <div class="error_text" v-show="errors.prefijoCel">
-                                    *Campo obligatorio
+                                    Seleccionar
                                 </div> 
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                             class="form-control col-12 border-top-0 border-left-0 border-right-0 rounded-1" name="mobile"
                             type="text" minlength="8" maxlength="15" required :class="{ error: errors.mobile }">
                             <div class="error_text" v-show="errors.mobile">
-                                *Campo obligatorio (entre 8 y 10 caracteres)
+                                Completa este campo (entre 8 y 10 caracteres)
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                                     v-bind:style="(index=='COL') ? 'font-weight: 700;' : '' ">{{ item.nombre }}</option>
                             </select>
                             <div class="error_text" v-show="errors.pais">
-                                *Campo obligatorio
+                                Selecciona
                             </div>
                         </div>
     
@@ -182,7 +182,7 @@
                                     v-bind:value="item.codigo">{{ item.nombre }}</option>
                             </select>
                             <div class="error_text" v-show="errors.departamento">
-                                *Campo obligatorio
+                                Selecciona
                             </div>
                         </div>
     
@@ -198,7 +198,7 @@
                                     {{ item.nombre }}</option>
                             </select>
                             <div class="error_text" v-show="errors.ciudad">
-                                *Campo obligatorio
+                                Selecciona
                             </div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                                 <option value="PREG2530">Segundo semestre de 2025</option>
                             </select>
                             <div class="error_text" v-show="errors.periodo_esperado">
-                                *Campo obligatorio
+                                Selecciona
                             </div>
                         </div>
                     </div>
@@ -302,15 +302,13 @@
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript">
     //Captura del codigo SAE
-    let codPrograma = "DSIND";
+    let codPrograma = "DSIND";   
 
-    const { createApp } = Vue
-
-    const app = createApp({
-        data() {
-            return {
+    const app = new Vue({
+        el:'#app',
+        data: {
                 programas: [],
                 prefijoCel: [],
                 // periodos: [],
@@ -365,7 +363,6 @@
                     campana: false,
                     autoriza: false
                 }
-            }
         },
         watch: {
             'data.first_name':
@@ -388,7 +385,7 @@
                     }
             }
         },
-        mounted() {
+        mounted:function() {
             // Recien carga el sitio se cargan los datos
             this.limpiarDatos()
             this.getUbicaciones()
@@ -627,8 +624,7 @@
             }
         }
     })
-
-    app.mount('#app')
+    
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

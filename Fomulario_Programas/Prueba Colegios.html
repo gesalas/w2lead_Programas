@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <style>
+        .error {
+            display: none;
+            padding-left: 5px;
+            font-size: 13px;
+            color: red;
+        }
+    
+        .error_input {
+            border-bottom: 2px solid red !important;
+        }
+    
+    
+        /*Quitar controles a numeros Importante */
+        input[type=number]::-webkit-inner-combobox,
+        input[type=number]::-webkit-outer-combobox {
+            -webkit-appearance: none;
+            margin: 0;
+        } 
+        /* Ocultar los controles de incremento y decremento cuando el campo está enfocado */
+        input[type=number]:focus::-webkit-inner-spin-button,
+        input[type=number]:focus::-webkit-outer-spin-button {
+            display: none;
+        }
+
+        /* Ocultar los controles de incremento y decremento cuando el mouse está encima */
+        input[type=number]:hover::-webkit-inner-spin-button,
+        input[type=number]:hover::-webkit-outer-spin-button {
+            display: none;
+}       
+    
+        .p-md-5 {
+        padding: 1.5rem !important;
+    }
+    
+    .form-group {
+        margin-bottom: 0.6rem;
+    }       
+    
+    .block-video .video-item img {
+        display: block;
+        height: auto;
+        width: 100%;
+        padding: 15px;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+    
+    
+    .form-control {
+        background-clip: border-box;
+        border-color: #ced4da;
+        border-bottom-width: 0.0625rem;
+        border-left-width: 0.0625rem;
+        border-right-width: 0.0625rem;
+        border-top-width: 0.0625rem;
+        height: 2.2rem;
+        min-width: 0;
+    }
+    
+    .formulario-jave:nth-of-type(1) {
+        max-width: 400px;
+        margin-left: 50px;
+    }
+
+    
+    </style>
+    
+     <div class="main_form" id="main_form">
+            <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="d-flex flex-column justify-content-around px-4 py-5 p-md-5">
+                <input type="hidden" name="oid" value="00D7j0000004eQD">
+                <input type="hidden" name="retURL" id="retURL" value="">
+                <input type="hidden" name="debug" value="1">
+                <input type="hidden" name="debugEmail" value="catalina.vallejo@javeriana.edu.co">    
+        
+                <!--Nombres y apellidos-->
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <input placeholder="*Nombre(s)" id="first_name"
+                            class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="40"
+                            name="first_name" onkeyup="this.value=limpiarTexto(this.value)" type="text" required="">
+                    </div>
+        
+                    <div class="form-group col-6">
+                        <input placeholder="*Apellidos" id="last_name"
+                            class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="80"
+                            name="last_name" onkeyup="this.value=limpiarTexto(this.value)" type="text" required="">
+                    </div>
+                </div>
+        
+                <!--Documentos de identidad-->
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <select id="00N7j000002BI3X" class="form-control border-top-0 border-left-0 border-right-0 rounded-0"
+                            name="00N7j000002BI3X" required="">
+                            <option value="">*Tipo de documento</option>
+                            <option value="CC">Cédula Ciudadanía</option>
+                            <option value="CE">Cédula Extranjería</option>
+                            <option value="PA">Pasaporte</option>
+                            <option value="TI">Tarjeta Identidad</option>        
+                        </select>
+                    </div>
+        
+                    <div class="form-group col-6">
+                        <input placeholder="*Número de documento" id="00N7j000002BI3V"
+                            class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="255"
+                            name="00N7j000002BI3V" type="text" required="">
+                    </div>
+                </div>
+                <!--Email y celular-->
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <input placeholder="*Email" id="email"
+                            class="form-control border-top-0 border-left-0 border-right-0 rounded-0" maxlength="80" name="email"
+                            type="email"  required="">
+                    </div> 
+                </div> 
+
+                <!--prefijo-->  
+                <div class="form-row">
+                    <div class="form-group col-12">                         
+                        <div class="input-group">
+                            <div class="select-wrapper" style="width:30%;">                        
+                                <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="prefijoSelect form-control border-top-0 border-left-0 border-right-0 rounded-0" required style="font-size: small; padding:0px 25px 0px 5px;">
+                                <option value="">(+) Indicativo </option>
+                                </select> 
+                                <div class="select-arrow"></div>
+                            </div>                                      
+                                <input placeholder="*Teléfono celular" id="mobile" 
+                                class="form-control border-top-0 border-left-0 border-right-0 rounded-0" min="9999999" maxlength="10"
+                                name="mobile" onkeyup="this.value=limpiarNumeros(this.value)" type="number" required oninvalid="this.setCustomValidity('El número de celular debe tener al menos 8 dígitos')" 
+                                oninput="setCustomValidity('')">                                                
+                        </div>
+                    </div>
+                </div>
+                Calendario Colegio:<select  id="00N7j000002BI3S" name="00N7j000002BI3S" title="Calendario Colegio"><option value="">--Ninguno--</option><option value="6 Meses">6 Meses</option>
+                    <option value="Año Completo">Año Completo</option>
+                    <option value="Calendario A">Calendario A</option>
+                    <option value="Calendario B">Calendario B</option>
+                    <option value="Ciclo Corto">Ciclo Corto</option>
+                    <option value="Cuatrimestre">Cuatrimestre</option>
+                    <option value="Desconocido">Desconocido</option>
+                    <option value="Flexible">Flexible</option>
+                    <option value="Otro">Otro</option>
+                    <option value="Trimestre">Trimestre</option>
+                    </select><br>
+
+                <!--Lugar de residencia-->
+        
+                <div class="form-row">
+                    <!-- Pais -->
+                    <div class="form-group col-12">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY1c"
+                            name="00N7j000002BY1c" type="text"  required="">
+                            <option value="">*Pais de residencia</option>
+                        </select>
+                    </div>
+        
+                    <!-- Departamento -->
+                    <div class="form-group col-6" id="departamentoContainer" style="display: none;">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY1h"
+                            name="00N7j000002BY1h" type="text">
+                            <option value="">*Selecciona el departamento</option>
+                        </select>
+                    </div>
+        
+                    <!-- Ciudad -->
+                    <div class="form-group col-6" id="ciudadContainer" style="display: none;">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY1i"
+                            name="00N7j000002BY1i" type="text">
+                            <option value="">*Selecciona la Ciudad</option>
+                        </select>
+                    </div>
+                </div>
+        
+        
+        
+                <!--Periodo de Ingreso-->
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="00N7j000002BY2L"
+                            maxlength="20" name="00N7j000002BY2L" type="text" required="">
+                            <option value="">*Periodo de Ingreso</option>                        
+                            <option value="PREG2430">Segundo semestre de 2024</option>
+                            <option value="PREG2510">Primer semestre de 2025</option>
+                            <option value="PREG2530">Segundo semestre de 2025</option>
+                        </select>
+                    </div>
+                </div>
+        
+                
+                <!--origen IMPORTANTE debe estar oculto-->
+                <div class="form-row" style="display: none;">
+                    <div class="form-group col-6">
+                        <label for="lead_source">Origen del candidato</label>
+                        <input class="form-control" id="lead_source" maxlength="255" name="lead_source" size="50" type="hidden" style="display: none;"
+                            value="Landing Pages" />
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="00N7j000002BY26">Fuente autorización</label>
+                        <input class="form-control" id="00N7j000002BY26" maxlength="255" name="00N7j000002BY26" size="50"
+                        type="hidden" style="display: none;" value="Landing Programas" />
+                    </div>
+                    <!--Codigo SAE-->
+                    <div class="form-group">
+                        <label for="00N7j000002BI3p">Código SAE</label>
+                        <input id="00N7j000002BI3p" class="form-control" maxlength="5" name="00N7j000002BI3p" size="20" type="text">
+                    </div>
+
+                    
+Origen de la Solicitud:<select  id="00NO40000002ZeP" name="00NO40000002ZeP" title="Origen de la Solicitud">
+    <option value="Web to Lead">Web to Lead</option>
+    </select>
+                </div>
+        
+                <!-- COntenido oculto Fuente, subfuente y campaña -->
+        
+                <div class="form-row" style="display: none;">
+                    <!-- Fuente -->
+                    <div class="form-group col-6">
+                        <label for="00N7j000002BKgW">Fuente</label>
+                        <input class="form-control" id="00N7j000002BKgW" maxlength="255" name="00N7j000002BKgW" size="50"
+                        type="" style="display: none;" />
+                    </div>
+        
+                    <!-- Subfuente -->
+                    <div class="form-group col-6">
+                        <label for="00N7j000002BKgb">Subfuente</label>
+                        <input class="form-control" id="00N7j000002BKgb" maxlength="255" name="00N7j000002BKgb" size="50"
+                        type="" style="display: none;" />
+                    </div>
+        
+                    <!-- Medio 00NO40000001izt -->
+                    <div class="form-group col-6">
+                        <label for="00NO40000001izt">Medio</label>
+                        <input class="form-control" id="00NO40000001izt" maxlength="255" name="00NO40000001izt" size="50"
+                        type="" style="display: none;" />
+                    </div> 
+    
+                    <!-- Campaña 00N7j000002BfkF -->
+                    <div class="form-group col-6">
+                        <label for="00N7j000002BfkF">Campaña</label>
+                        <input class="form-control" id="00N7j000002BfkF" maxlength="255" name="00N7j000002BfkF" size="50"
+                        type="" style="display: none;" />
+                    </div> 
+        
+                </div>
+        
+                <p>Autorizas el uso de <a href=""> tus datos personales</a></p>
+                <div class="form-row">
+                    <div class="input_check"></div>
+                    <div class="form-check" style="margin-left: 20px;">
+                        <input name="form_radio" id="data_auth" class="form_check form-check-input"  type="radio" value="1"
+                            required="">
+                        <label class="form-check-label" for="data_auth">Si</label>
+                    </div>
+        
+                    <div class="form-check" style="margin-left: 20px;">
+                        <input name="form_radio" class="form_check form-check-input"  type="radio" value="0">
+                        <label class="form-check-label">No</label>
+                    </div>
+                   
+                </div>
+                <div class="form-row">
+                    <p class="error error_check">La Pontificia Universidad Javeriana requiere de su autorización para el tratamiento de sus datos personales para continuar con el presente proceso, sin la autorización legalmente no podemos darle continuidad al mismo</p>
+                </div>
+                
+                <button type="submit" id="btn-send-form" class="badge badge-pill text-white text-bold py-3 px-5 shadow my-2 border-0 mx-auto d-block" name="submit" style="background-color: #F6BD30; font-size: 1rem; white-space: unset;">Enviar</button>
+            </form>
+        </div>
+        
+        <script>
+
+            $('input[name=form_radio]').change(()=>{           
+                let value = $( 'input[name=form_radio]:checked' ).val();
+                console.log(value)
+                if(value=="1"){
+                    $(".error_check").hide()
+                    $(".input_check").html("<input type='hidden' name='00N7j000002BI3m' value='1'>")
+                    $( '#btn-send-form').prop('disabled',false)
+                }else{
+                    $(".error_check").show()
+                    $(".input_check").html('')
+                    $( '#btn-send-form').prop('disabled',true)
+                }
+            })
+        
+            $('#email').change(()=>{ 
+                let emailRegex =  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;; 
+                const emailInput = document.getElementById('email');
+                if(!emailRegex.test($('#email').val())){
+                        emailInput.setCustomValidity('Ingresa una dirección de correo electrónico válida');
+                    } else {                
+                        emailInput.setCustomValidity('');
+                    }
+            })
+            
+        
+            // Codigo anterior
+            var getParameterByName = function (name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+            var isEmpty = function (e) {
+                switch (e) {
+                    case "":
+                    case 0:
+                    case "0":
+                    case null:
+                    case false:
+                    case typeof this === undefined:
+                    case typeof this == "undefined":
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        
+            var limpiarTexto = function (texto) {
+                let textolimpio = texto.replace(/[^a-zA-Záéíóúñ ]/g, "");
+                return textolimpio;
+            }
+            var limpiarNumeros = function (numero) {
+                let textolimpio = numero.replace(/[^0-9 ]/g, "");
+                return textolimpio;
+            }
+        
+            var limpiarJson = function (texto) {
+                return texto.replaceAll("|", "")
+                    .replace(/(\r\n|\n|\r)/gm, "")
+                    .replace(/['"]+/g, "'")
+                    .trim()
+            }
+        
+            var limpiarAlfanumerico = function (text) {
+                let textolimpio = text.replace(/[^a-zA-Z0-9- ]/g, "");
+                return textolimpio;
+            }
+        
+            var chargeUrlVariables = function () {
+                var utmsourceUrl = getParameterByName('utm_source');
+        
+                if (!isEmpty(utmsourceUrl)) {
+                    $('#utm_source').attr('value', utmsourceUrl);
+                }
+    
+                var utmsourceUrl = getParameterByName('utm_subsource');
+        
+                if (!isEmpty(utmsubsourceUrl)) {
+                    $('#utm_subsource').attr('value', utmsubsourceUrl);
+                }
+        
+                var utmlmediumUrl = getParameterByName('utm_medium');
+        
+                if (!isEmpty(utmlmediumUrl)) {
+                    $('#utm_medium').attr('value', utmlmediumUrl);
+                }
+        
+                var utmlmediumcampana = getParameterByName('utm_campaign');
+        
+                if (!isEmpty(utmlmediumcampana)) {
+                    $('#utm_campaign').attr('value', utmlmediumcampana);
+                }
+            }    
+        
+            // Función para cargar las opciones de los desplegables desde el archivo JSON
+            function cargarOpciones() {
+                fetch('/recursosdb/1372208/10609114/ubicaciones.json/42eea925-0d5b-f9b9-e17d-fb7ca71a69ad?t=1697836244890')
+                    .then(response => response.json())
+                    .then(data => {
+                        const paisSelect = document.getElementById('00N7j000002BY1c');
+                        const departamentoSelect = document.getElementById('00N7j000002BY1h');
+                        const ciudadSelect = document.getElementById('00N7j000002BY1i');
+                        const departamentoContainer = document.getElementById('departamentoContainer');
+                        const ciudadContainer = document.getElementById('ciudadContainer');                        
+        
+                        // Cargar opciones de país
+                        for (const pais in data) {
+                            const option = document.createElement('option');
+                            option.value = pais;
+                            option.textContent = data[pais].nombre;
+                            paisSelect.appendChild(option);
+                        }
+                            
+                        // Manejar cambio de selección de país
+                        paisSelect.addEventListener('change', () => {                            
+                            const paisSeleccionado = paisSelect.value;
+                            const departamentoData = data[paisSeleccionado]?.departamentos;
+        
+                            // valida si es colombia deja requeridos los campos departamento y ciudad
+        
+                            if(paisSeleccionado=='COL'){
+                                $("#00N7j000002BY1h").prop('required',true);
+                                $("#00N7j000002BY1i").prop('required',true);
+                                departamentoContainer.style.display= "block";
+                                departamentoSelect.style.display = "block";
+                            }else{
+                                $("#00N7j000002BY1h").prop('required',false);
+                                $("#00N7j000002BY1i").prop('required',false);
+                                departamentoContainer.style.display = 'none';
+                                ciudadContainer.style.display = 'none';
+                                departamentoSelect.innerHTML = '';
+                                ciudadSelect.innerHTML = '';
+                            }
+        
+                            if (departamentoData) {
+                                departamentoContainer.style.display = 'block';
+                                ciudadContainer.style.display = 'block';
+                                
+        
+                                // Cargar opciones de departamento
+                                departamentoSelect.innerHTML = '';
+                                const defaultDeptOption = document.createElement('option');
+                                defaultDeptOption.value = '';
+                                defaultDeptOption.textContent = '*Selecciona el departamento';
+                                departamentoSelect.appendChild(defaultDeptOption);
+                                for (const depto of departamentoData) {
+                                    const option = document.createElement('option');
+                                    option.value = depto.codigo;
+                                    option.textContent = depto.nombre;
+                                    departamentoSelect.appendChild(option);
+                                }
+        
+                                // Cargar opciones de ciudad (para el departamento seleccionado)
+                                const departamentoSeleccionado = departamentoSelect.value;
+                                const ciudadData = departamentoData.find(depto => depto.codigo === departamentoSeleccionado)?.ciudades;
+        
+                                ciudadSelect.innerHTML = '';
+                                const defaultCiudadOption = document.createElement('option');
+                                defaultCiudadOption.value = '';
+                                defaultCiudadOption.textContent = '*Primero selecciona el departamento';
+                                ciudadSelect.appendChild(defaultCiudadOption);
+        
+                                if (ciudadData) {
+                                    for (const ciudad of ciudadData) {
+                                        const option = document.createElement('option');
+                                        option.value = ciudad.codigo;
+                                        option.textContent = ciudad.nombre;
+                                        ciudadSelect.appendChild(option);
+                                    }
+                                }
+                            } else {
+                                departamentoContainer.style.display = 'none';
+                                ciudadContainer.style.display = 'none';
+                                departamentoSelect.innerHTML = '';
+                                ciudadSelect.innerHTML = '';
+                            }
+                        });                        
+        
+                        // Manejar cambio de selección de departamento
+                        departamentoSelect.addEventListener('change', () => {
+                            const paisSeleccionado = paisSelect.value;
+                            const departamentoSeleccionado = departamentoSelect.value;
+                            const ciudadData = data[paisSeleccionado]?.departamentos.find(depto => depto.codigo === departamentoSeleccionado)?.ciudades;
+        
+                            ciudadSelect.innerHTML = '';
+                            const defaultCiudadOption = document.createElement('option');
+                            defaultCiudadOption.value = '';
+                            defaultCiudadOption.textContent = '*Selecciona la ciudad';
+                            ciudadSelect.appendChild(defaultCiudadOption);
+        
+                            if (ciudadData) {
+                                for (const ciudad of ciudadData) {
+                                    const option = document.createElement('option');
+                                    option.value = ciudad.codigo;
+                                    option.textContent = ciudad.nombre;
+                                    ciudadSelect.appendChild(option);
+                                }
+                            }
+                        });                       
+                    })
+                    .catch(error => console.error('Error al cargar el archivo JSON:', error));
+            }
+        
+            // Llamar a la función al cargar la página
+            cargarOpciones();            
+            
+        </script>
+        
+        <script>
+            // retURL
+        
+            // Función para obtener los parámetros UTM de la URL
+            function getUTMParameters() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const utmSource = urlParams.get('utm_source') || '';
+                const utmSubsource = urlParams.get('utm_subsource') || '';
+                const utmMedium = urlParams.get('utm_medium') || '';
+                const utmCampaign = urlParams.get('utm_campaign') || '';
+        
+                // Actualizar los campos del formulario con los valores UTM
+                document.getElementById('00N7j000002BKgW').value    = utmSource;
+                document.getElementById('00N7j000002BKgb').value    = utmSubsource;
+                document.getElementById('00NO40000001izt').value    = utmMedium;
+                document.getElementById('00N7j000002BfkF').value    = utmCampaign;
+                
+            }
+        
+            // Llamar a la función al cargar la página
+            getUTMParameters();
+
+            //Variable seleccionar indicativo
+            const selectIndicativo = document.getElementById('00NO4000002lUPh');
+            let prefijoSeleccionado = document.getElementById("prefijoSeleccionado");
+
+            //Seleccionar codigo de pais
+            function codigoDePais(){                
+                
+                fetch('/recursosdb/1372208/10609114/codigos_pais.json/4733fa76-c07d-e51e-dcc0-0271cc2cdc2e?t=1713212607975')
+                .then(response => response.json())
+                .then(data => {                                
+                    data.forEach(pais => {                                                
+                        const option = document.createElement('option');                        
+                        option.value = pais.phoneCode;
+                        option.text = ("+" + pais.phoneCode + " ... " + pais.nameES);
+
+                        //Fondo:
+                        if (pais.nameES === 'Colombia') {
+                            option.style.backgroundColor = 'aliceBlue';
+                            option.style.color = '#000000';
+                            option.style.fontWeight = "900";
+                        }
+                        selectIndicativo.appendChild(option);                                                                                                                 
+                    });                
+                    
+                })
+                .catch(error => console.error('Error al cargar los países:', error));                
+            };                      
+            codigoDePais();
+
+            //Captura del codigo SAE
+            var codigoSae = document.getElementById("00N7j000002BI3p");
+            codigoSae.value = codPrograma;
+            
+        </script>
+    
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
