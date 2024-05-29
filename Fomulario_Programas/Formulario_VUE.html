@@ -137,11 +137,11 @@
                                 <select id="00NO4000002lUPh" name="00NO4000002lUPh" class="prefijoSelect form-control border-top-0 border-left-0 border-right-0 rounded-1" v-model="data.prefijoCel" v-on:change="deleteInvalid('prefijoCel')" required style="font-size: medium; padding:0px 25px 0px 5px;">
                                     <option value="">(+) Indicativo</option>
                                     <option v-for="pais in prefijoCel" :value="pais.phoneCode" v-bind:style="{ backgroundColor: pais.phoneName === 'Colombia' ? 'aliceBlue' : '', color: pais.phoneName === 'Colombia' ? '#000000' : '', fontWeight: pais.phoneName === 'Colombia' ? '900' : '' }">
-                                        {{ pais.phoneName }} (+{{ pais.phoneCode }})
+                                        (+{{ pais.phoneCode }}) {{ pais.phoneName }}
                                     </option>
                                 </select>
                                 <div class="error_text" v-show="errors.prefijoCel">
-                                    *Campo obligatorio
+                                    *Seleccione
                                 </div> 
                             </div>
                         </div>
@@ -368,6 +368,10 @@
             }
         },
         watch: {
+            'data.departamento': function(newVal, oldVal) {
+                this.data.ciudad = '';
+                this.errors.ciudad = false;
+            },
             'data.first_name':
             function (newText, oldText) {
                 this.data.first_name = this.limpiarTexto(newText);
@@ -442,6 +446,7 @@
                 **/
             getProgramas(codPrograma) {
                 return axios.get('https://raw.githubusercontent.com/gesalas/feria/main/programas.json')
+                //return axios.get('https://www.javeriana.edu.co/recursosdb/1372208/10609114/programas.json/763c6e09-7714-08f0-e639-24a6db5d3750')
                     .then((response) => {
                         const data = response.data;
                         for (let facultadKey in data) {
@@ -478,6 +483,7 @@
                 * Funcion para cargar las ubicaciones
                 **/
             getUbicaciones() {
+                //axios.get('https://www.javeriana.edu.co/recursosdb/1372208/10609114/ubicaciones.json/42eea925-0d5b-f9b9-e17d-fb7ca71a69ad')
                 axios.get('https://raw.githubusercontent.com/gesalas/feria/main/ubicaciones.json')
                     .then((response) => {
                         this.ubicaciones = response.data
@@ -491,6 +497,7 @@
                 * Funcion para cargar los celulares
                 **/
             getPrefijoCel() {
+                //axios.get('https://www.javeriana.edu.co/recursosdb/1372208/10609114/codigos_pais.json/4733fa76-c07d-e51e-dcc0-0271cc2cdc2e')
                 axios.get('https://raw.githubusercontent.com/gesalas/Piloto_registro_de_llamadas/main/Json/codigos_pais.json')
                     .then((response) => {
                         // Filtrar los datos para obtener solo los códigos de país y sus prefijos
